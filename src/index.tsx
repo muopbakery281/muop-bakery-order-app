@@ -2,7 +2,7 @@ import * as React from 'react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import './index.css'; // Đảm bảo bồ có file css này hoặc đổi tên cho đúng
+import './style.css'; // Đảm bảo bồ có file css này hoặc đổi tên cho đúng
 
 const rootElement = document.getElementById('root');
 
