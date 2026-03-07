@@ -238,8 +238,13 @@ if (IS_CLOSED) {
       <header className="bg-white border-b border-muop-blue sticky top-0 z-10">
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-muop-blue rounded-full flex items-center justify-center">
-              <span className="text-muop-primary font-bold text-xl">M</span>
+            {/* Đoạn code mới hiện Logo hình ảnh */}
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
+              <img
+                src="/logo-muop.png" // <-- Nhớ đổi tên file cho đúng với file bồ đã tải lên GitHub nhen
+                alt="Mướp Bakery Logo"
+                className="w-full h-full object-cover" // Giúp ảnh khít với khung tròn mà không bị bóp méo
+              />
             </div>
             <h1 className="text-xl font-bold text-muop-dark tracking-tight">Mướp Bakery</h1>
           </div>
