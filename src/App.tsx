@@ -280,7 +280,7 @@ if (IS_CLOSED) {
               </div>
               <div className="grid gap-4">
                 {PRODUCTS.map(product => {
-                  const item = cart.find(c => c.id === product.id);
+                  const item = cart.find(c => c.productId === product.id);
                   return (
                     <div key={product.id} className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:border-muop-blue transition-colors">
                       <div className="flex-1">
