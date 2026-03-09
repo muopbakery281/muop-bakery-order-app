@@ -153,7 +153,7 @@ export default function App() {
       <div className="min-h-screen bg-muop-blue flex items-center justify-center p-4 font-sans">
         <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full text-center space-y-6">
           <img src="/logo-muop.png" className="w-20 h-20 mx-auto rounded-full shadow-md object-cover" alt="Logo" />
-          <h2 className="text-2xl font-black text-muop-dark">Cảm ơn bồ đã ghé!</h2>
+          <h2 className="text-2xl font-black text-[#2e4171]">Cảm ơn bồ đã ghé!</h2>
           <p className="text-slate-600">Mướp đã nhận đủ đơn đợt này rồi. Hẹn bồ tuần sau nhé! ✨</p>
         </div>
       </div>
@@ -167,7 +167,7 @@ export default function App() {
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-12 h-12 text-green-500" />
           </div>
-          <h1 className="text-2xl font-bold text-muop-dark">Mướp đã nhận đơn!</h1>
+          <h1 className="text-2xl font-bold text-[#2e4171]">Mướp đã nhận đơn!</h1>
           <p className="text-slate-600">Mướp sẽ liên hệ xác nhận sớm nhất nha. Chúc bồ một ngày ngọt ngào! ✨</p>
           <button onClick={() => window.location.reload()} className="w-full py-3 bg-muop-primary text-white rounded-xl font-semibold hover:bg-muop-dark transition-colors">Quay lại trang chủ</button>
         </motion.div>
@@ -245,7 +245,7 @@ export default function App() {
             <div className="w-8 h-8 rounded-full overflow-hidden border border-muop-blue/50">
               <img src="/logo-muop.png" alt="Logo" className="w-full h-full object-cover" />
             </div>
-            <h1 className="text-lg font-bold text-muop-dark">Mướp Bakery</h1>
+            <h1 className="text-lg font-bold text-[#2e4171]">Mướp Bakery</h1>
           </div>
           <div className="flex items-center gap-1 text-xs font-bold text-muop-primary bg-muop-blue/30 px-3 py-1.5 rounded-full">
             <ShoppingCart className="w-3.5 h-3.5" />
@@ -270,7 +270,7 @@ export default function App() {
             <motion.div key="s1" initial={{ x: 10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -10, opacity: 0 }} className="space-y-6">
               <div className="flex items-center gap-2 mb-4">
                 <Package className="text-muop-primary" />
-                <h2 className="text-lg font-bold text-slate-800">Chọn bánh bồ thích</h2>
+                <h2 className="text-lg font-bold text-[#2e4171]">Chọn bánh bồ thích</h2>
               </div>
               <div className="grid gap-4">
                 {PRODUCTS.map(product => {
@@ -278,13 +278,13 @@ export default function App() {
                   return (
                     <div key={product.id} className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between">
                       <div className="flex-1 pr-4">
-                        <h3 className="font-bold text-slate-800">{product.name}</h3>
+                        <h3 className="font-bold text-[#2e4171]">{product.name}</h3>
                         <p className="text-xs text-slate-400 mt-1">{product.description}</p>
                         <p className="text-muop-primary font-bold mt-1">{product.price.toLocaleString()}đ</p>
                       </div>
                       <div className="flex items-center gap-3 bg-slate-50 p-1.5 rounded-xl">
                         <button onClick={() => updateQuantity(product.id, -1)} className="w-8 h-8 flex items-center justify-center rounded-lg bg-white shadow-sm">-</button>
-                        <span className="w-4 text-center font-bold text-muop-dark">{item?.quantity || 0}</span>
+                        <span className="w-4 text-center font-bold text-[#2e4171]">{item?.quantity || 0}</span>
                         <button onClick={() => updateQuantity(product.id, 1)} className="w-8 h-8 flex items-center justify-center rounded-lg bg-muop-primary text-white shadow-sm">+</button>
                       </div>
                     </div>
@@ -302,7 +302,7 @@ export default function App() {
                  {/* ... Giữ nguyên phần Form thông tin khách hàng từ code cũ của bồ ... */}
                  <div className="flex items-center gap-2">
                     <Truck className="text-muop-primary" />
-                    <h2 className="text-lg font-bold text-slate-800">Thông tin nhận hàng</h2>
+                    <h2 className="text-lg font-bold text-[#2e4171]">Thông tin nhận hàng</h2>
                  </div>
                  
                  <div className="grid grid-cols-2 gap-4">
@@ -337,7 +337,7 @@ export default function App() {
             <motion.div key="s3" initial={{ x: 10, opacity: 0 }} animate={{ x: 0, opacity: 1 }} className="space-y-6">
               <div className="bg-white p-6 rounded-3xl border border-slate-100 text-center space-y-4">
                 <p className="text-sm text-slate-500 uppercase font-bold">Tổng thanh toán</p>
-                <p className="text-3xl font-black text-muop-dark">{total.toLocaleString()}đ</p>
+                <p className="text-3xl font-black text-[#2e4171]">{total.toLocaleString()}đ</p>
                 
                 <div className="p-4 bg-white rounded-2xl border-2 border-muop-blue/50 inline-block">
                   <img src={`${BANK_INFO.qrPlaceholder}${total}`} alt="QR" className="w-48 h-48 mx-auto" />
@@ -372,7 +372,7 @@ export default function App() {
       {step < 3 && cart.length > 0 && (
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-100 p-4 shadow-lg z-20">
           <div className="max-w-2xl mx-auto flex justify-between items-center">
-            <div><p className="text-[10px] font-bold text-slate-400 uppercase">Tổng cộng</p><p className="text-lg font-black text-muop-dark">{total.toLocaleString()}đ</p></div>
+            <div><p className="text-[10px] font-bold text-slate-400 uppercase">Tổng cộng</p><p className="text-lg font-black text-[#2e4171]">{total.toLocaleString()}đ</p></div>
             <div className="text-sm font-bold text-muop-primary bg-muop-blue/20 px-4 py-2 rounded-xl">{cart.reduce((s, i) => s + i.quantity, 0)} món</div>
           </div>
         </div>
