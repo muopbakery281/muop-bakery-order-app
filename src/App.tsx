@@ -44,7 +44,7 @@ const BANK_INFO = {
   accountName: "NGUYEN THI NGOC HA",
   accountNumber: "333280188",
   bankName: "ACB",
-  qrPlaceholder: "https://lh3.googleusercontent.com/u/0/d/1KZixWBKHZJRA_H-NQKMpexw2ToYL_G-Z"
+  qrPlaceholder: "https://drive.google.com/uc?export=view&id=1KZixWBKHZJRA_H-NQKMpexw2ToYL_G-Z"
 };
 
 const PriceSummaryBox = ({ subtotal, shippingFee, total, onNext, nextLabel, showShipping = false, disabled = false }: any) => (
