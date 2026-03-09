@@ -193,13 +193,22 @@ if (IS_CLOSED) {
         <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
           
           {/* Logo nằm trong vòng tròn màu be y hệt Intro */}
-          <div className="w-28 h-28 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-white mx-auto">
+          <div className="w-28 h-28 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 
+            mx-auto 
+    
+            /* HIỆU ỨNG MỚI: Đổ bóng kép để tạo độ nổi */
+            shadow-lg shadow-blue-100/50
+            
+            /* HIỆU ỨNG MỚI: Viền trắng dày và rõ ràng */
+            border-4 border-white
+          ">
             <img 
               src="/logo-muop.png" 
               className="w-24 h-24 rounded-full object-cover" 
               alt="Mướp Bakery Logo" 
             />
           </div>
+          
 
           <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bạn đã ghé Mướp Bakery!</h2>
           <p className="text-slate-600 italic text-[15px]">
