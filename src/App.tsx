@@ -205,22 +205,55 @@ export default function App() {
     );
   }
 
-  // Trang Intro (hiển thị đầu tiên nếu đang mở cửa)
+// Trang Intro (hiển thị đầu tiên nếu đang mở cửa)
   if (showIntro) {
     return (
-      <div className="min-h-screen bg-muop-blue font-sans pb-10 flex flex-col items-center justify-center">
+      <div className="min-h-screen bg-[#eef2ff] font-sans pb-10 flex flex-col items-center justify-center">
          <div className="flex flex-col items-center pt-10 pb-6 text-center px-4 w-full max-w-md">
-            <img src="/logo-muop.png" className="w-32 h-32 rounded-full border-4 border-white mb-4 shadow-md object-cover" alt="Mướp Bakery Logo" />
-            <h1 className="text-3xl font-black text-muop-dark mb-2">Mướp Bakery</h1>
-            <div className="w-full bg-white rounded-[32px] p-6 shadow-xl text-left my-6 space-y-6">
-               <p className="text-slate-600 text-[15px] italic text-center leading-relaxed">
-                 Bánh thủ công, nướng mới theo đơn <br/> Thứ 7 & CN hàng tuần.
-               </p>
+            {/* Logo */}
+            <img src="/logo-muop.png" className="w-32 h-32 rounded-full border-4 border-white mb-6 shadow-md object-cover" alt="Mướp Bakery Logo" />
+            
+            {/* Title & Description */}
+            <h1 className="text-2xl font-black text-[#2e4171] mb-3 leading-tight">
+              Cảm ơn bạn đã ghé thăm Mướp Bakery
+            </h1>
+            <p className="text-slate-600 text-[15px] leading-relaxed mb-8 px-2">
+              Bánh của Mướp được làm thủ công, được nướng mới mỗi tuần để đảm bảo luôn có sẵn bánh tươi để phục vụ khách hàng.
+            </p>
+
+            {/* Khung Lịch trình */}
+            <div className="w-full bg-white rounded-[32px] p-8 shadow-xl text-left space-y-5 border border-[#dce4ff]">
+               <h2 className="font-bold text-[#2e4171] text-lg flex items-center gap-2">
+                 <span className="w-1.5 h-6 bg-[#2e4171] rounded-full"></span>
+                 Lịch nhận đơn & giao bánh
+               </h2>
+               
+               <div className="space-y-4">
+                 <div className="flex items-start gap-3">
+                   <div className="w-6 h-6 rounded-full bg-[#eef2ff] flex items-center justify-center mt-0.5">
+                     <span className="text-[#2e4171] text-xs font-bold">1</span>
+                   </div>
+                   <p className="text-slate-600 text-[15px]">
+                     <span className="font-bold text-slate-800">Chốt order:</span> Thứ 4 hàng tuần
+                   </p>
+                 </div>
+                 
+                 <div className="flex items-start gap-3">
+                   <div className="w-6 h-6 rounded-full bg-[#eef2ff] flex items-center justify-center mt-0.5">
+                     <span className="text-[#2e4171] text-xs font-bold">2</span>
+                   </div>
+                   <p className="text-slate-600 text-[15px]">
+                     <span className="font-bold text-slate-800">Giao bánh:</span> Thứ 7 & Chủ Nhật hàng tuần
+                   </p>
+                 </div>
+               </div>
+
+               {/* Nút bắt đầu đặt đơn */}
                <button 
                  onClick={() => setShowIntro(false)} 
-                 className="w-full bg-muop-primary text-white py-4 rounded-2xl font-bold shadow-lg shadow-muop-primary/30 hover:bg-muop-dark transition-colors text-lg"
+                 className="w-full bg-[#2e4171] text-white py-4 rounded-2xl font-bold shadow-lg shadow-[#2e4171]/20 hover:bg-[#1e2a4a] transition-all text-lg mt-4"
                >
-                 Bắt đầu đặt đơn thôi →
+                 Bắt đầu đặt bánh →
                </button>
             </div>
          </div>
