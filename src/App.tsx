@@ -200,8 +200,8 @@ export default function App() {
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-12 h-12 text-green-500" />
           </div>
-          <h1 className="text-2xl font-bold text-[#3b82f6]">Cảm ơn bồ, Mướp đã nhận đơn!</h1>
-          <p className="text-slate-600">Mướp sẽ kiểm tra bill và liên hệ xác nhận sớm nhất nha. ✨</p>
+          <h1 className="text-2xl font-bold text-[#3b82f6]">Cảm ơn bạn đã đặt hàng!</h1>
+          <p className="text-slate-600">Mướp sẽ kiểm tra thông tin và gửi thông tin xác nhận qua email trong vòng 24 giờ✨ </p>
           <button onClick={() => window.location.reload()} className="w-full py-3 bg-[#3b82f6] text-white rounded-xl font-semibold hover:bg-[#2563eb] transition-colors">
             Quay lại trang chủ
           </button>
@@ -464,7 +464,7 @@ export default function App() {
                   <ChevronLeft className="w-5 h-5" /> Quay lại
                 </button>
                 <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="flex-[2] py-4 bg-[#3b82f6] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-[#3b82f6]/20 disabled:opacity-50">
-                  {isSubmitting ? 'Đang gửi...' : 'Gửi đơn hàng'} <CheckCircle2 className="w-5 h-5" />
+                  {isSubmitting ? 'Đang ghi nhận đơn hàng...' : 'Đặt hàng'} <CheckCircle2 className="w-5 h-5" />
                 </button>
               </div>
             </motion.div>
