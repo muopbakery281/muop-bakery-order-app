@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ShoppingCart, Truck, Store, CreditCard, CheckCircle2, Upload, ChevronRight, ChevronLeft, Package, Bike } from 'lucide-react';
+import { ShoppingCart, Truck, Store, CreditCard, CheckCircle2, Upload, ChevronRight, ChevronLeft, Package, Motorike } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Types ---
@@ -363,7 +363,7 @@ if (IS_CLOSED) {
                     <span className="font-bold text-[#3b82f6]">Lấy đơn tại tiệm</span>
                   </button>
                   <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'delivery' ? 'border-[#3b82f6] bg-[#eef2ff]' : 'border-slate-100 bg-white'}`}>
-                    <Bike className={customer.shippingMethod === 'delivery' ? 'text-[#3b82f6]' : 'text-slate-400'} />
+                    <Motorbike className={customer.shippingMethod === 'delivery' ? 'text-[#3b82f6]' : 'text-slate-400'} />
                     <span className="font-bold text-[#3b82f6]">Giao hàng</span>
                   </button>
                 </div>
