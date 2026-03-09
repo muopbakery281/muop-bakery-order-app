@@ -236,7 +236,7 @@ if (IS_CLOSED) {
             <CheckCircle2 className="w-12 h-12 text-green-500" />
           </div>
           <h1 className="text-2xl font-bold text-[#3b82f6]">Cảm ơn bạn đã đặt hàng!</h1>
-          <p className="text-slate-600">Mướp sẽ kiểm tra đơn hàng và gửi thông tin xác nhận qua email trong vòng 24 giờ✨ </p>
+          <p className="text-slate-600">Mướp sẽ kiểm tra thông tin đơn hàng và gửi xác nhận qua email của bạn trong vòng 24 giờ✨ </p>
           <button onClick={() => window.location.reload()} className="w-full py-3 bg-[#3b82f6] text-white rounded-xl font-semibold hover:bg-[#2563eb] transition-colors">
             Quay lại trang chủ
           </button>
