@@ -189,8 +189,13 @@ export default function App() {
 if (IS_CLOSED) {
   return (
     <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 text-center">
-      <div className="bg-[#fffaee] p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
-        <img src="/logo-muop.png" className="w-24 h-24 mx-auto rounded-full shadow-md" alt="Logo" />
+      <div className="w-28 h-28 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-white mx-auto">
+                <img 
+                  src="/logo-muop.png" 
+                  className="w-24 h-24 rounded-full object-cover" 
+                  alt="Mướp Bakery Logo" 
+                />
+              </div>
 
         <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bạn đã ghé qua Mướp Bakery!</h2>
         <p className="text-slate-600 italic">Tiếc là Mướp đã nhận đủ đơn cho đợt này rồi. <br className="hidden sm:block" /> Hẹn bạn tuần sau nhé! ✨</p>
