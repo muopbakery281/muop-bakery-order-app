@@ -422,47 +422,60 @@ export default function App() {
   </motion.div>
 )}
         
-          {step === 3 && (
-            <motion.div key="step3" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
-              <div className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <CreditCard className="text-[#3b82f6]" />
-                  <h2 className="text-lg font-bold text-slate-800">Thanh toán chuyển khoản</h2>
+{step === 3 && (
+  <motion.div key="step3" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
+    <div className="space-y-6">
+      {/* ... (Phần thông tin QR bồ giữ nguyên) ... */}
+
+      <div className="space-y-4">
+        <div className="flex items-center gap-2">
+          <Upload className="text-[#3b82f6] w-5 h-5" />
+          <h3 className="font-bold text-slate-800">Xác nhận chuyển khoản</h3>
+        </div>
+        
+        <div className="relative">
+          <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" id="bill-upload" />
+          <label 
+            htmlFor="bill-upload" 
+            className="flex flex-col items-center justify-center w-full p-10 border-2 border-dashed border-slate-200 rounded-[32px] bg-white hover:border-[#3b82f6] transition-all cursor-pointer group"
+          >
+            {billPreview ? (
+              <img src={billPreview} alt="Bill preview" className="w-full max-h-64 object-contain rounded-xl" />
+            ) : (
+              <div className="flex flex-col items-center gap-3">
+                <div className="w-14 h-14 bg-[#eef2ff] rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Upload className="w-6 h-6 text-[#3b82f6]" />
                 </div>
-                <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-6">
-                  <div className="flex flex-col items-center gap-4">
-                    <div className="p-4 bg-white rounded-2xl border-2 border-[#eef2ff] shadow-inner">
-                      <img src={`${BANK_INFO.qrPlaceholder}${total}`} alt="Mã QR" className="w-56 h-56 object-contain" />
-                    </div>
-                    <div className="text-center space-y-1">
-                      <p className="text-sm text-slate-500">Quét mã để thanh toán nhanh</p>
-                      <p className="font-bold text-[#3b82f6] text-xl">{total.toLocaleString()}đ</p>
-                    </div>
-                  </div>
-                  <div className="border-t border-slate-50 pt-6 space-y-3">
-                    <div className="flex justify-between text-sm"><span className="text-slate-400">Tên tài khoản:</span><span className="font-bold text-slate-700">{BANK_INFO.accountName}</span></div>
-                    <div className="flex justify-between text-sm"><span className="text-slate-400">Số tài khoản:</span><span className="font-bold text-slate-700">{BANK_INFO.accountNumber}</span></div>
-                    <div className="flex justify-between text-sm"><span className="text-slate-400">Ngân hàng:</span><span className="font-bold text-slate-700">{BANK_INFO.bankName}</span></div>
-                    <div className="flex justify-between text-sm"><span className="text-slate-400">Nội dung:</span><span className="font-bold text-[#3b82f6]">{customer.name} - {customer.phone}</span></div>
-                  </div>
-                </div>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Upload className="text-[#3b82f6] w-5 h-5" />
-                    <h3 className="font-bold text-slate-800">Xác nhận chuyển khoản</h3>
-                  </div>
-                  <div className="relative">
-                    <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" id="bill-upload" />
-                    <label htmlFor="bill-upload" className="flex flex-col items-center justify-center w-full p-8 border-2 border-dashed border-slate-200 rounded-3xl bg-white hover:border-[#3b82f6] transition-all cursor-pointer">
-                      {billPreview ? <img src={billPreview} alt="Bill preview" className="w-full aspect-video object-contain" /> : <p className="text-slate-400 text-sm">Bấm để tải ảnh bill tại đây</p>}
-                    </label>
-                  </div>
+                <div className="text-center">
+                  <p className="text-slate-800 font-bold text-lg">Tải ảnh bill tại đây</p>
+                  <p className="text-slate-400 text-sm mt-1">Chụp màn hình chuyển khoản thành công</p>
                 </div>
               </div>
-              <div className="flex gap-4">
-                <button onClick={() => setStep(2)} className="flex-1 py-4 bg-white text-slate-500 border border-slate-200 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
-                  <ChevronLeft className="w-5 h-5" /> Quay lại
-                </button>
+            )}
+          </label>
+        </div>
+      </div>
+    </div>
+
+    {/* PHẦN NÚT BẤM MỚI THEO MẪU */}
+    <div className="flex gap-4 mt-10">
+      <button 
+        onClick={() => setStep(2)} 
+        className="flex-1 py-5 bg-white text-slate-600 border border-slate-200 rounded-[24px] font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all shadow-sm"
+      >
+        <ChevronLeft className="w-5 h-5" /> Quay lại
+      </button>
+      <button 
+        onClick={handleSubmit} 
+        disabled={!billImage || isSubmitting} 
+        className="flex-[2.5] py-5 bg-[#3b82f6] text-white rounded-[24px] font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-blue-100 disabled:opacity-50 disabled:bg-blue-300"
+      >
+        {isSubmitting ? 'Đang gửi...' : 'Gửi đơn hàng'} 
+        {!isSubmitting && <CheckCircle2 className="w-6 h-6 opacity-80" />}
+      </button>
+    </div>
+  </motion.div>
+)}
                 <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="flex-[2] py-4 bg-[#3b82f6] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-[#3b82f6]/20 disabled:opacity-50">
                   {isSubmitting ? 'Đang ghi nhận đơn hàng...' : 'Đặt hàng'} <CheckCircle2 className="w-5 h-5" />
                 </button>
