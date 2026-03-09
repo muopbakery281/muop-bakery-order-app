@@ -187,33 +187,37 @@ export default function App() {
   };
 
 if (IS_CLOSED) {
-  return (
-    <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 font-sans text-center">
-      {/* SỬA TẠI ĐÂY: Đổi bg-[#fffaee] thành bg-white cho khung lớn */}
-      <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
-        
-        {/* PHẦN LOGO MỚI THEO STYLE INTRO: Vòng tròn màu be bao quanh logo */}
-        <div className="w-28 h-28 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-white mx-auto">
-          <img 
-            src="/logo-muop.png" 
-            className="w-24 h-24 rounded-full object-cover" 
-            alt="Mướp Bakery Logo" 
-          />
-        </div>
-        <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bạn đã ghé qua Mướp Bakery!</h2>
-        <p className="text-slate-600 italic">Tiếc là Mướp đã nhận đủ đơn cho đợt này rồi. <br className="hidden sm:block" /> Hẹn bạn tuần sau nhé! ✨</p>
-        
-        <div className="pt-4 border-t border-slate-50">
-          <p className="text-sm text-slate-400 mb-4">Theo dõi Mướp để không bỏ lỡ đợt đặt bánh tới nha:</p>
-          <div className="flex justify-center gap-4">
-            <a href={SOCIAL_LINKS.facebook} className="px-4 py-2 bg-[#eef2ff] text-[#3b82f6] rounded-xl font-bold text-sm">Facebook</a>
-            <a href={SOCIAL_LINKS.instagram} className="px-4 py-2 bg-[#fef2f2] text-[#ec4899] rounded-xl font-bold text-sm">Instagram</a>
+    return (
+      <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 font-sans text-center">
+        {/* Khung trắng chính */}
+        <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
+          
+          {/* Vòng tròn màu be bao quanh logo */}
+          <div className="w-28 h-28 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-white mx-auto">
+            <img 
+              src="/logo-muop.png" 
+              className="w-24 h-24 rounded-full object-cover" 
+              alt="Mướp Bakery Logo" 
+            />
           </div>
-              </div>
-          </div>
-            );
-          }
 
+          <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bạn đã ghé qua Mướp Bakery!</h2>
+          <p className="text-slate-600 italic">
+            Tiếc là Mướp đã nhận đủ đơn cho đợt này rồi. <br className="hidden sm:block" /> Hẹn bạn tuần sau nhé! ✨
+          </p>
+          
+          <div className="pt-4 border-t border-slate-50">
+            <p className="text-sm text-slate-400 mb-4">Theo dõi Mướp để không bỏ lỡ đợt đặt bánh tới nha:</p>
+            <div className="flex justify-center gap-4">
+              <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noreferrer" className="px-4 py-2 bg-[#eef2ff] text-[#3b82f6] rounded-xl font-bold text-sm">Facebook</a>
+              <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noreferrer" className="px-4 py-2 bg-[#fef2f2] text-[#ec4899] rounded-xl font-bold text-sm">Instagram</a>
+            </div>
+          </div>
+        </div> {/* Đóng khung trắng */}
+      </div> {/* Đóng khung xanh nền */}
+    );
+  }
+  
   if (isSuccess) {
     return (
       <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 font-sans text-center">
