@@ -354,7 +354,7 @@ if (IS_CLOSED) {
             <motion.div key="step2" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
               <div className="space-y-6">
                 <div className="flex items-center gap-2">
-                  <Truck className="text-[#3b82f6]" />
+                  <Motorcycle className="text-[#3b82f6]" />
                   <h2 className="text-lg font-bold text-slate-800">Thông tin nhận hàng</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
