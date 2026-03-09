@@ -82,7 +82,7 @@ const PriceSummaryBox = ({ subtotal, shippingFee, total, onNext, nextLabel, show
   </div>
 );
 
-const IS_CLOSED = false;
+const IS_CLOSED = true; //False = Mở form | True = Đóng form
 
 // --- Main Component ---
 export default function App() {
