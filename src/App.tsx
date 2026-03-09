@@ -470,18 +470,13 @@ export default function App() {
         disabled={!billImage || isSubmitting} 
         className="flex-[2.5] py-5 bg-[#3b82f6] text-white rounded-[24px] font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-blue-100 disabled:opacity-50 disabled:bg-blue-300"
       >
-        {isSubmitting ? 'Đang gửi...' : 'Gửi đơn hàng'} 
+        {isSubmitting ? 'Đang ghi nhận đơn hàng...' : 'Đặt hàng'} 
         {!isSubmitting && <CheckCircle2 className="w-6 h-6 opacity-80" />}
       </button>
     </div>
   </motion.div>
 )}
-                <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="flex-[2] py-4 bg-[#3b82f6] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-[#3b82f6]/20 disabled:opacity-50">
-                  {isSubmitting ? 'Đang ghi nhận đơn hàng...' : 'Đặt hàng'} <CheckCircle2 className="w-5 h-5" />
-                </button>
-              </div>
-            </motion.div>
-          )}
+
         </AnimatePresence>
       </main>
     </div>
