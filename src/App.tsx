@@ -209,7 +209,7 @@ export default function App() {
   if (showIntro) {
     return (
       <div className="min-h-screen bg-[#eef2ff] font-sans pb-10 flex flex-col items-center justify-center">
-         <div className="flex flex-col items-center pt-10 pb-6 text-center px-4 w-full max-w-md">
+         <div className="flex flex-col items-center pt-10 pb-6 text-center px-4 w-full max-w-xl">
             
             {/* Logo với khung tròn màu be #fffaee */}
             <div className="w-36 h-36 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-white">
@@ -217,7 +217,7 @@ export default function App() {
             </div>
             
             {/* Title trên cùng 1 dòng */}
-            <h1 className="text-[20px] font-black text-[#2e4171] mb-4 whitespace-nowrap">
+            <h1 className="text-[20px] font-black text-[#2e4171] mb-4 w-full">
               Cảm ơn bạn đã ghé thăm Mướp Bakery
             </h1>
 
