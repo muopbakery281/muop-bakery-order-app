@@ -9,7 +9,7 @@
   --muop-gold: #dbac75;    /* Vàng đồng - Dùng cho Highlight, Giá tiền */
   --muop-brown: #794d3a;   /* Nâu - Dùng cho Text phụ */
   
-  --bg-main: var(--muop-light);
+  --bg-main: var(--muop-blue);
   --text-main: var(--muop-dark);
   --border-color: rgba(163, 191, 216, 0.4); /* Màu xanh nhạt có độ trong suốt */
 }
@@ -23,7 +23,7 @@
 
 body {
   background-color: var(--bg-main);
-  color: var(--text-main);
+  color: var(--bg-main);
   margin: 0;
   /* Bỏ !important ở đây để tránh lỗi icon, chỉ định rõ font Lexend */
   font-family: 'Lexend Deca', sans-serif;
