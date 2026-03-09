@@ -1,19 +1,57 @@
+/* 1. Nhập font lên đầu tiên */
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700;800;900&display=swap');
 
+:root {
+  /* Bảng màu chuẩn Mướp Bakery */
+  --muop-dark: #2e4171;    /* Xanh đậm chính - Dùng cho Text chính, Button */
+  --muop-light: #fffaee;   /* Nền Be sáng - Dùng cho Background */
+  --muop-blue: #a3bfd8;    /* Xanh nhạt phụ - Dùng cho Border, Nền phụ */
+  --muop-gold: #dbac75;    /* Vàng đồng - Dùng cho Highlight, Giá tiền */
+  --muop-brown: #794d3a;   /* Nâu - Dùng cho Text phụ */
+  
+  --bg-main: var(--muop-light);
+  --text-main: var(--muop-dark);
+  --border-color: rgba(163, 191, 216, 0.4); /* Màu xanh nhạt có độ trong suốt */
+}
+
 * {
-  font-family: 'Lexend Deca', sans-serif !important;
-  /* Giúp chữ hiển thị mượt mà hơn trên các trình duyệt di động */
+  box-sizing: border-box;
+  /* Giúp chữ hiển thị mượt mà hơn */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Tinh chỉnh riêng cho tiêu đề chính để nhìn "nghệ" hơn */
-h1 {
-  font-weight: 700;
-  letter-spacing: -0.03em; /* Thu hẹp khoảng cách chữ một chút cho Lexend nhìn đặc hơn */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  /* Bỏ !important ở đây để tránh lỗi icon, chỉ định rõ font Lexend */
+  font-family: 'Lexend Deca', sans-serif;
 }
 
-/* Mã đơn hàng Cột D hiển thị sẽ rất rõ nét với font này */
+/* Áp dụng font cho tất cả tiêu đề và input */
+h1, h2, h3, h4, button, input, textarea {
+  font-family: 'Lexend Deca', sans-serif;
+}
+
+h1 {
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--muop-dark);
+}
+
+/* Tinh chỉnh cho Order Number giống yêu cầu của bồ */
 .order-number {
   font-weight: 800;
+  color: var(--muop-dark);
+  background-color: var(--muop-blue); /* Tạo một lớp nền nhẹ cho mã đơn */
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+/* Thêm một class bổ trợ cho các đoạn văn bản mô tả (màu nâu) */
+.description-text {
+  color: var(--muop-brown);
+  font-weight: 400;
+  font-size: 0.9rem;
 }
