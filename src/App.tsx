@@ -189,10 +189,10 @@ export default function App() {
 if (IS_CLOSED) {
     return (
       <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 font-sans text-center">
-        {/* Khung trắng chính */}
+        {/* Khung trắng chính - Bo góc 32px và đổ bóng */}
         <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
           
-          {/* Vòng tròn màu be bao quanh logo */}
+          {/* Logo nằm trong vòng tròn màu be y hệt Intro */}
           <div className="w-28 h-28 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-white mx-auto">
             <img 
               src="/logo-muop.png" 
@@ -201,20 +201,21 @@ if (IS_CLOSED) {
             />
           </div>
 
-          <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bạn đã ghé qua Mướp Bakery!</h2>
-          <p className="text-slate-600 italic">
-            Tiếc là Mướp đã nhận đủ đơn cho đợt này rồi. <br className="hidden sm:block" /> Hẹn bạn tuần sau nhé! ✨
+          <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bồ đã ghé!</h2>
+          <p className="text-slate-600 italic text-[15px]">
+            Mướp đã nhận đủ đơn đợt này rồi. <br className="hidden sm:block" /> Hẹn bồ tuần sau nhé! ✨
           </p>
           
+          {/* Phần kết nối Social */}
           <div className="pt-4 border-t border-slate-50">
-            <p className="text-sm text-slate-400 mb-4">Theo dõi Mướp để không bỏ lỡ đợt đặt bánh tới nha:</p>
+            <p className="text-sm text-slate-400 mb-4">Kết nối với Mướp tại:</p>
             <div className="flex justify-center gap-4">
               <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noreferrer" className="px-4 py-2 bg-[#eef2ff] text-[#3b82f6] rounded-xl font-bold text-sm">Facebook</a>
               <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noreferrer" className="px-4 py-2 bg-[#fef2f2] text-[#ec4899] rounded-xl font-bold text-sm">Instagram</a>
             </div>
           </div>
-        </div> {/* Đóng khung trắng */}
-      </div> {/* Đóng khung xanh nền */}
+        </div> 
+      </div> 
     );
   }
   
