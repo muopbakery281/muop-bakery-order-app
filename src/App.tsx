@@ -222,7 +222,7 @@ export default function App() {
             </h1>
 
             {/* Mô tả ngắt làm 2 dòng */}
-            <p className="text-slate-600 text-[15px] leading-relaxed mb-8 px-4 max-w-[700px] mx-auto">
+            <p className="text-slate-600 text-[15px] leading-relaxed mb-8 px-4 max-w-[900px] mx-auto">
               Bánh của Mướp được làm thủ công, được nướng mới mỗi tuần để đảm bảo luôn có sẵn bánh tươi để phục vụ khách hàng.
             </p>
 
