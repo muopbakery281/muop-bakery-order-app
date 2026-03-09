@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ShoppingCart, Truck, Store, CreditCard, CheckCircle2, Upload, ChevronRight, ChevronLeft, Package, Motorcycle } from 'lucide-react';
+import { ShoppingCart, Truck, Store, CreditCard, CheckCircle2, Upload, ChevronRight, ChevronLeft, Package, Truck } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Types ---
@@ -354,7 +354,7 @@ if (IS_CLOSED) {
             <motion.div key="step2" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
               <div className="space-y-6">
                 <div className="flex items-center gap-2">
-                  <Motorcycle className="text-[#3b82f6]" />
+                  <Truck className="text-[#3b82f6]" />
                   <h2 className="text-lg font-bold text-slate-800">Thông tin nhận hàng</h2>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
@@ -363,7 +363,7 @@ if (IS_CLOSED) {
                     <span className="font-bold text-[#3b82f6]">Lấy đơn tại tiệm</span>
                   </button>
                   <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'delivery' ? 'border-[#3b82f6] bg-[#eef2ff]' : 'border-slate-100 bg-white'}`}>
-                    <Motorcycle className={customer.shippingMethod === 'delivery' ? 'text-[#3b82f6]' : 'text-slate-400'} />
+                    <Truck className={customer.shippingMethod === 'delivery' ? 'text-[#3b82f6]' : 'text-slate-400'} />
                     <span className="font-bold text-[#3b82f6]">Giao hàng</span>
                   </button>
                 </div>
