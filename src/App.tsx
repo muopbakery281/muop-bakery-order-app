@@ -153,7 +153,7 @@ export default function App() {
       setIsSuccess(true);
     } catch (error) {
       console.error('Error submitting order:', error);
-      alert('Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại hoặc liên hệ Mướp qua Hotline.');
+      alert('Có lỗi xảy ra khi gửi đơn hàng. Vui lòng thử lại hoặc liên hệ Mướp qua Facebok hoặc Instagram.');
     } finally {
       setIsSubmitting(false);
     }
@@ -223,7 +223,8 @@ export default function App() {
 
             {/* Mô tả ngắt làm 2 dòng */}
             <p className="text-slate-600 text-[15px] leading-relaxed mb-8 px-4 max-w-[1100px] mx-auto">
-              Bánh của Mướp được làm thủ công, được nướng mới mỗi tuần để đảm bảo luôn có sẵn bánh tươi để phục vụ khách hàng.
+              Bánh của Mướp được làm thủ công, được nướng mới mỗi tuần để đảm bảo <br className="hidden sm:block" /> 
+     luôn có sẵn bánh tươi để phục vụ khách hàng.
             </p>
 
             {/* Khung Lịch trình */}
