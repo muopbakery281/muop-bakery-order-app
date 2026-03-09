@@ -6,18 +6,25 @@
     <title>Mướp Bakery - Order</title>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@100..900&display=swap" rel="stylesheet">
+
 <script>
   tailwind.config = {
     theme: {
       extend: {
+        fontFamily: {
+          // Thiết lập Lexend Deca làm font mặc định cho toàn bộ class "sans" của Tailwind
+          sans: ['Lexend Deca', 'sans-serif'],
+        },
         colors: {
-          'muop-primary': '#0EA5E9', // Xanh blue chủ đạo mới
-          'muop-blue': '#E0F2FE',    // Xanh nhạt nền
-          'muop-dark': '#0F172A',    // Màu chữ đậm tinh tế
+          'muop-primary': '#0EA5E9',
+          'muop-blue': '#E0F2FE',
+          'muop-dark': '#0F172A',
         }
       }
     }
   }
+</script>
 </script>
   <body>
     <div id="root"></div>
