@@ -378,7 +378,9 @@ export default function App() {
                     </div>
                   </div>
                   <div className="border-t border-slate-50 pt-6 space-y-3">
+                    <div className="flex justify-between text-sm"><span className="text-slate-400">Tên tài khoản:</span><span className="font-bold text-slate-700">{BANK_INFO.accountName}</span></div>
                     <div className="flex justify-between text-sm"><span className="text-slate-400">Số tài khoản:</span><span className="font-bold text-slate-700">{BANK_INFO.accountNumber}</span></div>
+                    <div className="flex justify-between text-sm"><span className="text-slate-400">Ngân hàng:</span><span className="font-bold text-slate-700">{BANK_INFO.bankName}</span></div>
                     <div className="flex justify-between text-sm"><span className="text-slate-400">Nội dung:</span><span className="font-bold text-[#2e4171]">{customer.name} - {customer.phone}</span></div>
                   </div>
                 </div>
