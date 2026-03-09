@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { ShoppingCart, Truck, Store, CreditCard, CheckCircle2, Upload, ChevronRight, ChevronLeft, Package } from 'lucide-react';
+import { ShoppingCart, Truck, Store, CreditCard, CheckCircle2, Upload, ChevronRight, ChevronLeft, Package, Bike } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Types ---
@@ -360,11 +360,11 @@ if (IS_CLOSED) {
                 <div className="grid grid-cols-2 gap-4">
                   <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'pickup' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'pickup' ? 'border-[#3b82f6] bg-[#eef2ff]' : 'border-slate-100 bg-white'}`}>
                     <Store className={customer.shippingMethod === 'pickup' ? 'text-[#3b82f6]' : 'text-slate-400'} />
-                    <span className="font-bold text-[#3b82f6]">Pick up tại tiệm</span>
+                    <span className="font-bold text-[#3b82f6]">Lấy đơn tại tiệm</span>
                   </button>
                   <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'delivery' ? 'border-[#3b82f6] bg-[#eef2ff]' : 'border-slate-100 bg-white'}`}>
-                    <Truck className={customer.shippingMethod === 'delivery' ? 'text-[#3b82f6]' : 'text-slate-400'} />
-                    <span className="font-bold text-[#3b82f6]">Giao hàng tận nơi</span>
+                    <Bike className={customer.shippingMethod === 'delivery' ? 'text-[#3b82f6]' : 'text-slate-400'} />
+                    <span className="font-bold text-[#3b82f6]">Giao hàng</span>
                   </button>
                 </div>
 
@@ -373,7 +373,7 @@ if (IS_CLOSED) {
                     <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                       Tên của bạn<span className="text-red-500 ml-1">*</span>
                     </label>
-                    <input type="text" placeholder="Nhập tên bồ nè..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#3b82f6] outline-none transition-all text-black font-medium" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
+                    <input type="text" placeholder="Nhập tên bạn..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#3b82f6] outline-none transition-all text-black font-medium" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
@@ -404,7 +404,7 @@ if (IS_CLOSED) {
                   {customer.shippingMethod === 'pickup' && (
                     <div className="space-y-4 pt-4 border-t border-slate-50 animate-fade-in-up">
                       <label className="text-xs font-bold uppercase tracking-wider text-[#3b82f6]">
-                        Bồ muốn pick up tại Mướp vào ngày nào?<span className="text-red-500 ml-1">*</span>
+                        Chọn ngày lấy đơn tại tiệm <span className="text-red-500 ml-1">*</span>
                       </label>
                       <div className="grid grid-cols-1 gap-3">
                         <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Saturday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Saturday' ? 'border-[#3b82f6] bg-[#eef2ff] text-[#3b82f6]' : 'border-slate-100 bg-white text-slate-400'}`}>
@@ -417,7 +417,7 @@ if (IS_CLOSED) {
                         
                         <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Sunday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Sunday' ? 'border-[#3b82f6] bg-[#eef2ff] text-[#3b82f6]' : 'border-slate-100 bg-white text-slate-400'}`}>
                           <div className="flex justify-between w-full">
-                            <span>Chủ nhật (13:00 - 17:00)</span>
+                            <span>Chủ nhật (16:00 - 20:00)</span>
                             {customer.pickupDay === 'Sunday' && <CheckCircle2 className="w-4 h-4 text-[#3b82f6]" />}
                           </div>
                           <span className="text-[11px] font-medium opacity-80 text-slate-500 text-left">📍 Địa chỉ: 205 Đường số 5, KĐT Lakeview City, Phường An Phú, Quận 2, TP.HCM</span>
