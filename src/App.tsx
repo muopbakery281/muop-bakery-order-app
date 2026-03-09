@@ -308,16 +308,16 @@ export default function App() {
                 <div className="space-y-5 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
                   <div className="space-y-1.5">
                     <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tên của bạn*</label>
-                    <input type="text" placeholder="Nhập tên bồ nè..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
+                    <input type="text" placeholder="Nhập tên bồ nè..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Số điện thoại*</label>
-                      <input type="tel" placeholder="09xx..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
+                      <input type="tel" placeholder="09xx..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Email*</label>
-                      <input type="email" placeholder="muop@bakery.com" className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all" value={customer.email} onChange={e => setCustomer(prev => ({ ...prev, email: e.target.value }))} />
+                      <input type="email" placeholder="muop@bakery.com" className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.email} onChange={e => setCustomer(prev => ({ ...prev, email: e.target.value }))} />
                     </div>
                   </div>
                   {customer.shippingMethod === 'pickup' && (
@@ -337,13 +337,13 @@ export default function App() {
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} className="space-y-4 pt-4 border-t border-slate-50">
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Khu vực giao hàng*</label>
-                        <select className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-[#2e4171] transition-all" value={customer.zone} onChange={e => setCustomer(prev => ({ ...prev, zone: e.target.value }))}>
-                          {ZONES.map(z => (<option key={z.id} value={z.id}>{z.name} - {z.fee.toLocaleString()}đ</option>))}
+                        <select className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-[#2e4171] transition-all text-black font-medium" value={customer.zone} onChange={e => setCustomer(prev => ({ ...prev, zone: e.target.value }))}>
+                          {ZONES.map(z => (<option key={z.id} value={z.id} className="text-black">{z.name} - {z.fee.toLocaleString()}đ</option>))}
                         </select>
                       </div>
                       <div className="space-y-1.5">
                         <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Địa chỉ chi tiết*</label>
-                        <textarea placeholder="Số nhà, tên đường, phường..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none min-h-[80px] focus:ring-2 focus:ring-[#2e4171] transition-all" value={customer.address} onChange={e => setCustomer(prev => ({ ...prev, address: e.target.value }))} />
+                        <textarea placeholder="Số nhà, tên đường, phường..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none min-h-[80px] focus:ring-2 focus:ring-[#2e4171] transition-all text-black font-medium" value={customer.address} onChange={e => setCustomer(prev => ({ ...prev, address: e.target.value }))} />
                       </div>
                     </motion.div>
                   )}
