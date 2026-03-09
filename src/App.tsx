@@ -177,28 +177,46 @@ export default function App() {
 
   if (showIntro) {
     return (
-      <div className="min-h-screen bg-slate-50 font-sans flex flex-col items-center justify-center p-4">
+      <div className="min-h-screen flex items-center justify-center p-6">
+  
         <motion.div 
           initial={{ y: 20, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }}
           className="bg-white rounded-[40px] shadow-2xl max-w-md w-full p-8 text-center space-y-8 border border-slate-100"
         >
           {/* Logo với nền #fffaee */}
-          <div className="inline-block p-6 bg-[#fffaee] rounded-full shadow-inner">
-             <img src="/logo-muop.png" className="w-28 h-28 object-contain" alt="Mướp Bakery Logo" />
+         <div className="flex justify-center">
+          <div className="w-24 h-24 bg-[#fffaee] rounded-full flex items-center justify-center">
+             <img src="/logo-muop.png" alt="Mướp Bakery" className="w-16 h-16 object-contain" />
           </div>
+        </div>
 
-          <div className="space-y-4">
-            <h1 className="text-2xl font-black text-muop-dark">Cảm ơn bạn đã ghé thăm Mướp Bakery.</h1>
-            <div className="text-slate-600 leading-relaxed text-[15px] space-y-4">
-              <p>
-                Vì bánh của Mướp được làm <strong>hoàn toàn thủ công</strong>, bánh được nướng mới mỗi tuần nên để đảm bảo chất lượng bánh được tốt nhất:
-              </p>
-              <p className="bg-muop-blue/10 p-4 rounded-2xl border border-muop-blue/20">
-                Mướp sẽ chốt order vào <span className="text-muop-primary font-bold">Thứ 4</span> hàng tuần (hoặc cho đến khi hết bánh) và giao bánh vào <span className="text-muop-primary font-bold">Thứ 7 & Chủ Nhật</span> hàng tuần.
-              </p>
-            </div>
-          </div>
+        <div className="space-y-4">
+          <h1 className="text-[#2e4171] text-xl font-bold">
+            Cảm ơn bạn đã ghé thăm<br/>Mướp Bakery.
+          </h1>
+          <p className="text-[#794d3a] text-sm leading-relaxed">
+            Vì bánh của Mướp được làm <strong>hoàn toàn thủ công</strong>, nướng mới mỗi tuần để đảm bảo chất lượng tốt nhất.
+          </p>
+        </div>
+
+        {/* Khung thông tin lịch chốt đơn - Dùng màu xanh nhạt nhẹ cho nội dung */}
+        <div className="bg-[#a3bfd8]/20 rounded-2xl p-4 text-[#2e4171] text-xs">
+          Mướp sẽ chốt order vào <span className="font-bold">Thứ 4</span> hàng tuần...
+        </div>
+
+        {/* Nút bấm chính - Dùng màu xanh đậm chuẩn của bồ */}
+        <button 
+          onClick={() => setShowIntro(false)}
+          className="w-full bg-[#2e4171] text-white py-4 rounded-2xl font-bold shadow-lg active:scale-95 transition-transform"
+        >
+          Bắt đầu đặt hàng →
+        </button>
+      </motion.div>
+      
+    </div>
+  );
+}
 
           <button 
             onClick={() => setShowIntro(false)}
