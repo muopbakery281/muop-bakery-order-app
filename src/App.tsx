@@ -201,14 +201,14 @@ if (IS_CLOSED) {
             />
           </div>
 
-          <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bồ đã ghé!</h2>
+          <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bạn đã ghé Mướp Bakery!</h2>
           <p className="text-slate-600 italic text-[15px]">
-            Mướp đã nhận đủ đơn đợt này rồi. <br className="hidden sm:block" /> Hẹn bồ tuần sau nhé! ✨
+           Tiếc là Mướp đã nhận đủ đơn bánh cho đợt này rồi. <br className="hidden sm:block" /> Hẹn bồ tuần sau nhé! ✨
           </p>
           
           {/* Phần kết nối Social */}
           <div className="pt-4 border-t border-slate-50">
-            <p className="text-sm text-slate-400 mb-4">Kết nối với Mướp tại:</p>
+            <p className="text-sm text-slate-400 mb-4">Theo dõi Mướp để không bỏ lỡ đợt đặt bánh tới nha:</p>
             <div className="flex justify-center gap-4">
               <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noreferrer" className="px-4 py-2 bg-[#eef2ff] text-[#3b82f6] rounded-xl font-bold text-sm">Facebook</a>
               <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noreferrer" className="px-4 py-2 bg-[#fef2f2] text-[#ec4899] rounded-xl font-bold text-sm">Instagram</a>
