@@ -210,6 +210,7 @@ if (IS_CLOSED) {
             <a href={SOCIAL_LINKS.instagram} className="px-4 py-2 bg-[#fef2f2] text-[#ec4899] rounded-xl font-bold text-sm">Instagram</a>
           </div>
               </div>
+          </div>
             );
           }
 
