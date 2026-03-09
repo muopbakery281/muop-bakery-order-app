@@ -288,67 +288,93 @@ export default function App() {
             </motion.div>
           )}
 
-          {step === 2 && (
-            <motion.div key="step2" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
-              <div className="space-y-6">
-                <div className="flex items-center gap-2">
-                  <Truck className="text-[#2e4171]" />
-                  <h2 className="text-lg font-bold text-slate-800">Thông tin nhận hàng</h2>
+         {step === 2 && (
+  <motion.div key="step2" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
+    <div className="space-y-6">
+      <div className="flex items-center gap-2">
+        <Truck className="text-[#2e4171]" />
+        <h2 className="text-lg font-bold text-slate-800">Thông tin nhận hàng</h2>
+      </div>
+      <div className="grid grid-cols-2 gap-4">
+        <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'pickup' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'pickup' ? 'border-[#2e4171] bg-muop-blue/20' : 'border-slate-100 bg-white'}`}>
+          <Store className={customer.shippingMethod === 'pickup' ? 'text-[#2e4171]' : 'text-slate-400'} />
+          <span className="font-bold text-sm">Pick up tại tiệm</span>
+        </button>
+        <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'delivery' ? 'border-[#2e4171] bg-muop-blue/20' : 'border-slate-100 bg-white'}`}>
+          <Truck className={customer.shippingMethod === 'delivery' ? 'text-[#2e4171]' : 'text-slate-400'} />
+          <span className="font-bold text-sm">Giao hàng tận nơi</span>
+        </button>
+      </div>
+
+      <div className="space-y-5 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+        <div className="space-y-1.5">
+          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+            Tên của bạn<span className="text-red-500 ml-1">*</span>
+          </label>
+          <input type="text" placeholder="Nhập tên bồ nè..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
+        </div>
+        
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-1.5">
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              Số điện thoại<span className="text-red-500 ml-1">*</span>
+            </label>
+            <input type="tel" placeholder="09xx..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
+          </div>
+          <div className="space-y-1.5">
+            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+              Email<span className="text-red-500 ml-1">*</span>
+            </label>
+            <input type="email" placeholder="muop@bakery.com" className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.email} onChange={e => setCustomer(prev => ({ ...prev, email: e.target.value }))} />
+          </div>
+        </div>
+
+        {customer.shippingMethod === 'pickup' && (
+          <div className="space-y-4 pt-4 border-t border-slate-50 animate-fade-in-up">
+            <label className="text-xs font-bold uppercase tracking-wider text-muop-dark">
+              Bồ muốn pick up tại Mướp vào ngày nào?<span className="text-red-500 ml-1">*</span>
+            </label>
+            <div className="grid grid-cols-1 gap-3">
+              <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Saturday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Saturday' ? 'border-[#2e4171] bg-muop-blue/20 text-muop-dark' : 'border-slate-100 bg-white text-slate-400'}`}>
+                <div className="flex justify-between w-full">
+                  <span>Thứ 7 (13:00 - 17:00)</span>
+                  {customer.pickupDay === 'Saturday' && <CheckCircle2 className="w-4 h-4 text-[#2e4171]" />}
                 </div>
-                <div className="grid grid-cols-2 gap-4">
-                  <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'pickup' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'pickup' ? 'border-[#2e4171] bg-muop-blue/20' : 'border-slate-100 bg-white'}`}>
-                    <Store className={customer.shippingMethod === 'pickup' ? 'text-[#2e4171]' : 'text-slate-400'} />
-                    <span className="font-bold text-sm">Pick up tại tiệm</span>
-                  </button>
-                  <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'delivery' ? 'border-[#2e4171] bg-muop-blue/20' : 'border-slate-100 bg-white'}`}>
-                    <Truck className={customer.shippingMethod === 'delivery' ? 'text-[#2e4171]' : 'text-slate-400'} />
-                    <span className="font-bold text-sm">Giao hàng tận nơi</span>
-                  </button>
+                <span className="text-[11px] font-medium opacity-80">📍 Địa chỉ: 123/A Bình Thạnh, TP.HCM</span>
+              </button>
+              
+              <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Sunday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Sunday' ? 'border-[#2e4171] bg-muop-blue/20 text-muop-dark' : 'border-slate-100 bg-white text-slate-400'}`}>
+                <div className="flex justify-between w-full">
+                  <span>Chủ nhật (13:00 - 17:00)</span>
+                  {customer.pickupDay === 'Sunday' && <CheckCircle2 className="w-4 h-4 text-[#2e4171]" />}
                 </div>
-                <div className="space-y-5 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Tên của bạn*</label>
-                    <input type="text" placeholder="Nhập tên bồ nè..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Số điện thoại*</label>
-                      <input type="tel" placeholder="09xx..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
-                    </div>
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Email*</label>
-                      <input type="email" placeholder="muop@bakery.com" className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.email} onChange={e => setCustomer(prev => ({ ...prev, email: e.target.value }))} />
-                    </div>
-                  </div>
-                  {customer.shippingMethod === 'pickup' && (
-                    <div className="space-y-4 pt-4 border-t border-slate-50 animate-fade-in-up">
-                      <label className="text-xs font-bold uppercase tracking-wider text-muop-dark">Bồ muốn pick up tại Mướp vào ngày nào?*</label>
-                      <div className="grid grid-cols-2 gap-4">
-                        <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Saturday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-center gap-1 ${customer.pickupDay === 'Saturday' ? 'border-[#2e4171] bg-muop-blue/20 text-muop-dark' : 'border-slate-100 bg-white text-slate-400'}`}>
-                          <span>Thứ 7</span><span className="text-[10px] font-medium">(13:00 - 17:00)</span>
-                        </button>
-                        <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Sunday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-center gap-1 ${customer.pickupDay === 'Sunday' ? 'border-[#2e4171] bg-muop-blue/20 text-muop-dark' : 'border-slate-100 bg-white text-slate-400'}`}>
-                          <span>Chủ nhật</span><span className="text-[10px] font-medium">(13:00 - 17:00)</span>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                  {customer.shippingMethod === 'delivery' && (
-                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} className="space-y-4 pt-4 border-t border-slate-50">
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Khu vực giao hàng*</label>
-                        <select className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-[#2e4171] transition-all text-black font-medium" value={customer.zone} onChange={e => setCustomer(prev => ({ ...prev, zone: e.target.value }))}>
-                          {ZONES.map(z => (<option key={z.id} value={z.id} className="text-black">{z.name} - {z.fee.toLocaleString()}đ</option>))}
-                        </select>
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">Địa chỉ chi tiết*</label>
-                        <textarea placeholder="Số nhà, tên đường, phường..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none min-h-[80px] focus:ring-2 focus:ring-[#2e4171] transition-all text-black font-medium" value={customer.address} onChange={e => setCustomer(prev => ({ ...prev, address: e.target.value }))} />
-                      </div>
-                    </motion.div>
-                  )}
-                </div>
-              </div>
+                <span className="text-[11px] font-medium opacity-80">📍 Địa chỉ: 456/B Phường Thảo Điền, Quận 2</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {customer.shippingMethod === 'delivery' && (
+          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} className="space-y-4 pt-4 border-t border-slate-50">
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                Khu vực giao hàng<span className="text-red-500 ml-1">*</span>
+              </label>
+              <select className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-[#2e4171] transition-all text-black font-medium" value={customer.zone} onChange={e => setCustomer(prev => ({ ...prev, zone: e.target.value }))}>
+                {ZONES.map(z => (<option key={z.id} value={z.id} className="text-black">{z.name} - {z.fee.toLocaleString()}đ</option>))}
+              </select>
+            </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                Địa chỉ chi tiết<span className="text-red-500 ml-1">*</span>
+              </label>
+              <textarea placeholder="Số nhà, tên đường, phường..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none min-h-[80px] focus:ring-2 focus:ring-[#2e4171] transition-all text-black font-medium" value={customer.address} onChange={e => setCustomer(prev => ({ ...prev, address: e.target.value }))} />
+            </div>
+          </motion.div>
+        )}
+      </div>
+    </div>
+
               <div className="flex gap-4">
                 <button onClick={() => setStep(1)} className="flex-1 py-4 bg-white text-slate-500 border border-slate-200 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
                   <ChevronLeft className="w-5 h-5" /> Quay lại
