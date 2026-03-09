@@ -44,7 +44,7 @@ const BANK_INFO = {
   accountName: "NGUYEN THI NGOC HA",
   accountNumber: "333280188",
   bankName: "ACB",
-  qrPlaceholder: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=STK:333280188|BANK:ACB|AMOUNT:"
+  qrPlaceholder: "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=STK:333280188|BANK:ACB|AMOUNT:"
 };
 
 const IS_CLOSED = false;
@@ -148,15 +148,11 @@ export default function App() {
 
   if (IS_CLOSED) {
     return (
-      <div className="min-h-screen bg-muop-dark flex items-center justify-center p-4 font-sans">
-        <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full text-center space-y-6">
+      <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 font-sans text-center">
+        <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
           <img src="/logo-muop.png" className="w-20 h-20 mx-auto rounded-full shadow-md object-cover" alt="Logo" />
-          <h2 className="text-2xl font-black text-muop-dark">Cảm ơn bồ đã ghé!</h2>
+          <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bồ đã ghé!</h2>
           <p className="text-slate-600">Mướp đã nhận đủ đơn đợt này rồi. Hẹn bồ tuần sau nhé! ✨</p>
-          <div className="flex flex-col gap-2">
-            <a href="https://facebook.com/muop.bakery" className="py-3 bg-[#1877F2] text-white rounded-xl font-bold">Facebook</a>
-            <a href="https://instagram.com/muop.bakery" className="py-3 bg-gradient-to-r from-[#833AB4] to-[#FCB045] text-white rounded-xl font-bold">Instagram</a>
-          </div>
         </div>
       </div>
     );
@@ -164,14 +160,14 @@ export default function App() {
 
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-muop-dark flex items-center justify-center p-4 font-sans">
-        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full text-center space-y-6">
+      <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 font-sans text-center">
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-12 h-12 text-green-500" />
           </div>
-          <h1 className="text-2xl font-bold text-muop-dark">Cảm ơn bồ, Mướp đã nhận đơn!</h1>
+          <h1 className="text-2xl font-bold text-[#3b82f6]">Cảm ơn bồ, Mướp đã nhận đơn!</h1>
           <p className="text-slate-600">Mướp sẽ kiểm tra bill và liên hệ xác nhận sớm nhất nha. ✨</p>
-          <button onClick={() => window.location.reload()} className="w-full py-3 bg-[#2e4171] text-white rounded-xl font-semibold hover:bg-muop-dark transition-colors">
+          <button onClick={() => window.location.reload()} className="w-full py-3 bg-[#3b82f6] text-white rounded-xl font-semibold hover:bg-[#2563eb] transition-colors">
             Quay lại trang chủ
           </button>
         </motion.div>
@@ -186,29 +182,29 @@ export default function App() {
             <div className="w-36 h-36 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-white">
               <img src="/logo-muop.png" className="w-32 h-32 rounded-full object-cover" alt="Mướp Bakery Logo" />
             </div>
-            <h1 className="text-[20px] font-black text-[#2e4171] mb-4 w-full">Cảm ơn bạn đã ghé thăm Mướp Bakery</h1>
+            <h1 className="text-[20px] font-black text-[#3b82f6] mb-4 w-full">Cảm ơn bạn đã ghé thăm Mướp Bakery</h1>
             <p className="text-slate-600 text-[15px] leading-relaxed mb-8 px-4 max-w-[1100px] mx-auto">
               Bánh của Mướp được làm thủ công, được nướng mới mỗi tuần <br className="hidden sm:block" /> để đảm bảo luôn có sẵn bánh tươi để phục vụ khách hàng.
             </p>
             <div className="w-full bg-white rounded-[32px] p-8 shadow-xl text-left space-y-5 border border-[#dce4ff]">
-               <h2 className="font-bold text-[#2e4171] text-lg flex items-center gap-2">
-                 <span className="w-1.5 h-6 bg-[#2e4171] rounded-full"></span> Lịch nhận đơn & giao bánh
+               <h2 className="font-bold text-[#3b82f6] text-lg flex items-center gap-2">
+                 <span className="w-1.5 h-6 bg-[#3b82f6] rounded-full"></span> Lịch nhận đơn & giao bánh
                </h2>
                <div className="space-y-4">
                  <div className="flex items-start gap-3">
                    <div className="w-6 h-6 rounded-full bg-[#eef2ff] flex items-center justify-center mt-0.5">
-                     <span className="text-[#2e4171] text-[10px] font-bold">1</span>
+                     <span className="text-[#3b82f6] text-[10px] font-bold">1</span>
                    </div>
                    <p className="text-slate-600 text-[15px]"><span className="font-bold text-slate-800">Chốt order:</span> Thứ 4 hàng tuần</p>
                  </div>
                  <div className="flex items-start gap-3">
                    <div className="w-6 h-6 rounded-full bg-[#eef2ff] flex items-center justify-center mt-0.5">
-                     <span className="text-[#2e4171] text-[10px] font-bold">2</span>
+                     <span className="text-[#3b82f6] text-[10px] font-bold">2</span>
                    </div>
                    <p className="text-slate-600 text-[15px]"><span className="font-bold text-slate-800">Giao bánh:</span> Thứ 7 & Chủ Nhật hàng tuần</p>
                  </div>
                </div>
-               <button onClick={() => setShowIntro(false)} className="w-full bg-[#2e4171] text-white py-4 rounded-2xl font-bold shadow-lg shadow-[#2e4171]/20 hover:bg-[#1e2a4a] transition-all text-lg mt-4">
+               <button onClick={() => setShowIntro(false)} className="w-full bg-[#3b82f6] text-white py-4 rounded-2xl font-bold shadow-lg shadow-[#3b82f6]/20 hover:bg-[#2563eb] transition-all text-lg mt-4">
                  Bắt đầu đặt bánh →
                </button>
             </div>
@@ -219,15 +215,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans pb-24">
-      <header className="bg-white border-b border-muop-dark sticky top-0 z-10 shadow-sm">
+      <header className="bg-white border-b border-[#eef2ff] sticky top-0 z-10 shadow-sm">
         <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center border-2 border-muop-dark/50">
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center border-2 border-[#eef2ff]">
               <img src="/logo-muop.png" alt="Mướp Bakery Logo" className="w-full h-full object-cover" />
             </div>
-            <h1 className="text-xl font-bold text-muop-dark tracking-tight">Mướp Bakery</h1>
+            <h1 className="text-xl font-bold text-[#3b82f6] tracking-tight">Mướp Bakery</h1>
           </div>
-          <div className="flex items-center gap-1 text-sm font-medium text-[#2e4171] bg-muop-dark/30 px-3 py-1.5 rounded-full">
+          <div className="flex items-center gap-1 text-sm font-medium text-white bg-[#3b82f6] px-3 py-1.5 rounded-full">
             <ShoppingCart className="w-4 h-4" />
             <span>{cart.reduce((sum, item) => sum + item.quantity, 0)} món</span>
           </div>
@@ -239,11 +235,11 @@ export default function App() {
           {[1, 2, 3].map(i => (
             <div key={i} className="flex items-center">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold transition-colors ${
-                step >= i ? 'bg-[#2e4171] text-white' : 'bg-white text-slate-300 border border-slate-200'
+                step >= i ? 'bg-[#3b82f6] text-white' : 'bg-white text-slate-300 border border-slate-200'
               }`}>
                 {i}
               </div>
-              {i < 3 && <div className={`w-12 h-0.5 ${step > i ? 'bg-[#2e4171]' : 'bg-slate-200'}`} />}
+              {i < 3 && <div className={`w-12 h-0.5 ${step > i ? 'bg-[#3b82f6]' : 'bg-slate-200'}`} />}
             </div>
           ))}
         </div>
@@ -252,35 +248,35 @@ export default function App() {
           {step === 1 && (
             <motion.div key="step1" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-6">
               <div className="flex items-center gap-2 mb-4">
-                <Package className="text-[#2e4171]" />
+                <Package className="text-[#3b82f6]" />
                 <h2 className="text-lg font-bold text-slate-800">Chọn bánh bồ thích</h2>
               </div>
               <div className="grid gap-4">
                 {PRODUCTS.map(product => {
                   const item = cart.find(c => c.productId === product.id);
                   return (
-                    <div key={product.id} className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:border-muop-dark transition-colors">
+                    <div key={product.id} className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:border-[#3b82f6] transition-colors">
                       <div className="flex-1 pr-4">
                         <h3 className="font-bold text-slate-800">{product.name}</h3>
                         <p className="text-sm text-slate-500">{product.description || `${product.price.toLocaleString()}đ`}</p>
-                        <p className="text-[#2e4171] font-bold mt-1">{product.price.toLocaleString()}đ</p>
+                        <p className="text-[#3b82f6] font-bold mt-1">{product.price.toLocaleString()}đ</p>
                       </div>
                       <div className="flex items-center gap-3 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
-                        <button type="button" onClick={(e) => { e.preventDefault(); updateQuantity(product.id, -1); }} className="w-8 h-8 flex items-center justify-center rounded-lg bg-white shadow-sm text-slate-600 hover:text-[#2e4171] active:scale-90 transition-transform">-</button>
-                        <span className="w-6 text-center font-black text-muop-dark">{item?.quantity || 0}</span>
-                        <button type="button" onClick={(e) => { e.preventDefault(); updateQuantity(product.id, 1); }} className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#2e4171] text-white shadow-sm hover:bg-muop-dark active:scale-90 transition-transform">+</button>
+                        <button type="button" onClick={(e) => { e.preventDefault(); updateQuantity(product.id, -1); }} className="w-8 h-8 flex items-center justify-center rounded-lg bg-white shadow-sm text-slate-600 hover:text-[#3b82f6] active:scale-90 transition-transform">-</button>
+                        <span className="w-6 text-center font-black text-[#3b82f6]">{item?.quantity || 0}</span>
+                        <button type="button" onClick={(e) => { e.preventDefault(); updateQuantity(product.id, 1); }} className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#3b82f6] text-white shadow-sm hover:bg-[#2563eb] active:scale-90 transition-transform">+</button>
                       </div>
                     </div>
                   );
                 })}
               </div>
               {cart.length > 0 && (
-                <div className="bg-muop-dark/20 p-4 rounded-2xl border border-muop-dark/30 space-y-3 mt-6">
+                <div className="bg-[#eef2ff] p-4 rounded-2xl border border-[#dce4ff] space-y-3 mt-6">
                   <div className="flex justify-between text-sm text-slate-600 font-medium">
                     <span>Tạm tính:</span>
-                    <span className="text-muop-dark">{subtotal.toLocaleString()}đ</span>
+                    <span className="text-[#3b82f6] font-bold">{subtotal.toLocaleString()}đ</span>
                   </div>
-                  <button onClick={() => setStep(2)} className="w-full py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-dark transition-all shadow-lg shadow-[#2e4171]/20">
+                  <button onClick={() => setStep(2)} className="w-full py-4 bg-[#3b82f6] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-[#3b82f6]/20">
                     Tiếp tục đặt hàng <ChevronRight className="w-5 h-5" />
                   </button>
                 </div>
@@ -288,98 +284,98 @@ export default function App() {
             </motion.div>
           )}
 
-         {step === 2 && (
-  <motion.div key="step2" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
-    <div className="space-y-6">
-      <div className="flex items-center gap-2">
-        <Truck className="text-[#2e4171]" />
-        <h2 className="text-lg font-bold text-slate-800">Thông tin nhận hàng</h2>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'pickup' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'pickup' ? 'border-[#2e4171] bg-muop-dark/20' : 'border-slate-100 bg-white'}`}>
-          <Store className={customer.shippingMethod === 'pickup' ? 'text-[#2e4171]' : 'text-slate-400'} />
-          <span className="font-bold text-[#2e4171]">Pick up tại tiệm</span>
-        </button>
-        <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'delivery' ? 'border-[#2e4171] bg-muop-dark/20' : 'border-slate-100 bg-white'}`}>
-          <Truck className={customer.shippingMethod === 'delivery' ? 'text-[#2e4171]' : 'text-slate-400'} />
-          <span className="font-bold text-[#2e4171]">Giao hàng tận nơi</span>
-        </button>
-      </div>
-
-      <div className="space-y-5 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
-        <div className="space-y-1.5">
-          <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-            Tên của bạn<span className="text-red-500 ml-1">*</span>
-          </label>
-          <input type="text" placeholder="Nhập tên bồ nè..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
-        </div>
-        
-        <div className="grid grid-cols-2 gap-4">
-          <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              Số điện thoại<span className="text-red-500 ml-1">*</span>
-            </label>
-            <input type="tel" placeholder="09xx..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
-          </div>
-          <div className="space-y-1.5">
-            <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-              Email<span className="text-red-500 ml-1">*</span>
-            </label>
-            <input type="email" placeholder="muop@bakery.com" className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#2e4171] outline-none transition-all text-black font-medium" value={customer.email} onChange={e => setCustomer(prev => ({ ...prev, email: e.target.value }))} />
-          </div>
-        </div>
-
-        {customer.shippingMethod === 'pickup' && (
-          <div className="space-y-4 pt-4 border-t border-slate-50 animate-fade-in-up">
-            <label className="text-xs font-bold uppercase tracking-wider text-muop-dark">
-              Bồ muốn pick up tại Mướp vào ngày nào?<span className="text-red-500 ml-1">*</span>
-            </label>
-            <div className="grid grid-cols-1 gap-3">
-              <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Saturday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Saturday' ? 'border-[#2e4171] bg-muop-dark/20 text-muop-dark' : 'border-slate-100 bg-white text-slate-400'}`}>
-                <div className="flex justify-between w-full">
-                  <span>Thứ 7 (13:00 - 17:00)</span>
-                  {customer.pickupDay === 'Saturday' && <CheckCircle2 className="w-4 h-4 text-[#2e4171]" />}
+          {step === 2 && (
+            <motion.div key="step2" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
+              <div className="space-y-6">
+                <div className="flex items-center gap-2">
+                  <Truck className="text-[#3b82f6]" />
+                  <h2 className="text-lg font-bold text-slate-800">Thông tin nhận hàng</h2>
                 </div>
-                <span className="text-[11px] font-medium opacity-80">📍 Địa chỉ: 179 Chu Văn An, Phường 26, Quận Bình Thạnh, TP.HCM</span>
-              </button>
-              
-              <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Sunday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Sunday' ? 'border-[#2e4171] bg-muop-dark/20 text-muop-dark' : 'border-slate-100 bg-white text-slate-400'}`}>
-                <div className="flex justify-between w-full">
-                  <span>Chủ nhật (13:00 - 17:00)</span>
-                  {customer.pickupDay === 'Sunday' && <CheckCircle2 className="w-4 h-4 text-[#2e4171]" />}
+                <div className="grid grid-cols-2 gap-4">
+                  <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'pickup' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'pickup' ? 'border-[#3b82f6] bg-[#eef2ff]' : 'border-slate-100 bg-white'}`}>
+                    <Store className={customer.shippingMethod === 'pickup' ? 'text-[#3b82f6]' : 'text-slate-400'} />
+                    <span className="font-bold text-[#3b82f6]">Pick up tại tiệm</span>
+                  </button>
+                  <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'delivery' ? 'border-[#3b82f6] bg-[#eef2ff]' : 'border-slate-100 bg-white'}`}>
+                    <Truck className={customer.shippingMethod === 'delivery' ? 'text-[#3b82f6]' : 'text-slate-400'} />
+                    <span className="font-bold text-[#3b82f6]">Giao hàng tận nơi</span>
+                  </button>
                 </div>
-                <span className="text-[11px] font-medium opacity-80">📍 Địa chỉ: 205 Đường số 5, KĐT Lakeview City, Phường An Phú, Quận 2, TP.HCM</span>
-              </button>
-            </div>
-          </div>
-        )}
 
-        {customer.shippingMethod === 'delivery' && (
-          <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} className="space-y-4 pt-4 border-t border-slate-50">
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                Khu vực giao hàng<span className="text-red-500 ml-1">*</span>
-              </label>
-              <select className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-[#2e4171] transition-all text-black font-medium" value={customer.zone} onChange={e => setCustomer(prev => ({ ...prev, zone: e.target.value }))}>
-                {ZONES.map(z => (<option key={z.id} value={z.id} className="text-black">{z.name} - {z.fee.toLocaleString()}đ</option>))}
-              </select>
-            </div>
-            <div className="space-y-1.5">
-              <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                Địa chỉ chi tiết<span className="text-red-500 ml-1">*</span>
-              </label>
-              <textarea placeholder="Số nhà, tên đường, phường..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none min-h-[80px] focus:ring-2 focus:ring-[#2e4171] transition-all text-black font-medium" value={customer.address} onChange={e => setCustomer(prev => ({ ...prev, address: e.target.value }))} />
-            </div>
-          </motion.div>
-        )}
-      </div>
-    </div>
+                <div className="space-y-5 bg-white p-6 rounded-3xl border border-slate-100 shadow-sm">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                      Tên của bạn<span className="text-red-500 ml-1">*</span>
+                    </label>
+                    <input type="text" placeholder="Nhập tên bồ nè..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#3b82f6] outline-none transition-all text-black font-medium" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                        Số điện thoại<span className="text-red-500 ml-1">*</span>
+                      </label>
+                      <input type="tel" placeholder="09xx..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#3b82f6] outline-none transition-all text-black font-medium" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                        Email<span className="text-red-500 ml-1">*</span>
+                      </label>
+                      <input type="email" placeholder="muop@bakery.com" className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#3b82f6] outline-none transition-all text-black font-medium" value={customer.email} onChange={e => setCustomer(prev => ({ ...prev, email: e.target.value }))} />
+                    </div>
+                  </div>
+
+                  {customer.shippingMethod === 'pickup' && (
+                    <div className="space-y-4 pt-4 border-t border-slate-50 animate-fade-in-up">
+                      <label className="text-xs font-bold uppercase tracking-wider text-[#3b82f6]">
+                        Bồ muốn pick up tại Mướp vào ngày nào?<span className="text-red-500 ml-1">*</span>
+                      </label>
+                      <div className="grid grid-cols-1 gap-3">
+                        <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Saturday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Saturday' ? 'border-[#3b82f6] bg-[#eef2ff] text-[#3b82f6]' : 'border-slate-100 bg-white text-slate-400'}`}>
+                          <div className="flex justify-between w-full">
+                            <span>Thứ 7 (13:00 - 17:00)</span>
+                            {customer.pickupDay === 'Saturday' && <CheckCircle2 className="w-4 h-4 text-[#3b82f6]" />}
+                          </div>
+                          <span className="text-[11px] font-medium opacity-80 text-slate-500 text-left">📍 Địa chỉ: 179 Chu Văn An, Phường 26, Quận Bình Thạnh, TP.HCM</span>
+                        </button>
+                        
+                        <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Sunday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Sunday' ? 'border-[#3b82f6] bg-[#eef2ff] text-[#3b82f6]' : 'border-slate-100 bg-white text-slate-400'}`}>
+                          <div className="flex justify-between w-full">
+                            <span>Chủ nhật (13:00 - 17:00)</span>
+                            {customer.pickupDay === 'Sunday' && <CheckCircle2 className="w-4 h-4 text-[#3b82f6]" />}
+                          </div>
+                          <span className="text-[11px] font-medium opacity-80 text-slate-500 text-left">📍 Địa chỉ: 205 Đường số 5, KĐT Lakeview City, Phường An Phú, Quận 2, TP.HCM</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+
+                  {customer.shippingMethod === 'delivery' && (
+                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} className="space-y-4 pt-4 border-t border-slate-50">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                          Khu vực giao hàng<span className="text-red-500 ml-1">*</span>
+                        </label>
+                        <select className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none focus:ring-2 focus:ring-[#3b82f6] transition-all text-black font-medium" value={customer.zone} onChange={e => setCustomer(prev => ({ ...prev, zone: e.target.value }))}>
+                          {ZONES.map(z => (<option key={z.id} value={z.id} className="text-black">{z.name} - {z.fee.toLocaleString()}đ</option>))}
+                        </select>
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
+                          Địa chỉ chi tiết<span className="text-red-500 ml-1">*</span>
+                        </label>
+                        <textarea placeholder="Số nhà, tên đường, phường..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl outline-none min-h-[80px] focus:ring-2 focus:ring-[#3b82f6] transition-all text-black font-medium" value={customer.address} onChange={e => setCustomer(prev => ({ ...prev, address: e.target.value }))} />
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
 
               <div className="flex gap-4">
                 <button onClick={() => setStep(1)} className="flex-1 py-4 bg-white text-slate-500 border border-slate-200 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
                   <ChevronLeft className="w-5 h-5" /> Quay lại
                 </button>
-                <button onClick={() => setStep(3)} disabled={!customer.name.trim() || !customer.phone.trim() || !customer.email.trim() || (customer.shippingMethod === 'delivery' && !customer.address.trim())} className="flex-[2] py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-dark transition-all shadow-lg shadow-[#2e4171]/20 disabled:opacity-50 disabled:grayscale">
+                <button onClick={() => setStep(3)} disabled={!customer.name.trim() || !customer.phone.trim() || !customer.email.trim() || (customer.shippingMethod === 'delivery' && !customer.address.trim())} className="flex-[2] py-4 bg-[#3b82f6] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-[#3b82f6]/20 disabled:opacity-50 disabled:grayscale">
                   Thanh toán <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
@@ -390,34 +386,34 @@ export default function App() {
             <motion.div key="step3" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
               <div className="space-y-6">
                 <div className="flex items-center gap-2">
-                  <CreditCard className="text-[#2e4171]" />
+                  <CreditCard className="text-[#3b82f6]" />
                   <h2 className="text-lg font-bold text-slate-800">Thanh toán chuyển khoản</h2>
                 </div>
                 <div className="bg-white p-6 rounded-3xl border border-slate-100 shadow-sm space-y-6">
                   <div className="flex flex-col items-center gap-4">
-                    <div className="p-4 bg-white rounded-2xl border-2 border-muop-dark/50 shadow-inner">
+                    <div className="p-4 bg-white rounded-2xl border-2 border-[#eef2ff] shadow-inner">
                       <img src={`${BANK_INFO.qrPlaceholder}${total}`} alt="Mã QR" className="w-56 h-56 object-contain" />
                     </div>
                     <div className="text-center space-y-1">
                       <p className="text-sm text-slate-500">Quét mã để thanh toán nhanh</p>
-                      <p className="font-bold text-muop-dark text-xl">{total.toLocaleString()}đ</p>
+                      <p className="font-bold text-[#3b82f6] text-xl">{total.toLocaleString()}đ</p>
                     </div>
                   </div>
                   <div className="border-t border-slate-50 pt-6 space-y-3">
                     <div className="flex justify-between text-sm"><span className="text-slate-400">Tên tài khoản:</span><span className="font-bold text-slate-700">{BANK_INFO.accountName}</span></div>
                     <div className="flex justify-between text-sm"><span className="text-slate-400">Số tài khoản:</span><span className="font-bold text-slate-700">{BANK_INFO.accountNumber}</span></div>
                     <div className="flex justify-between text-sm"><span className="text-slate-400">Ngân hàng:</span><span className="font-bold text-slate-700">{BANK_INFO.bankName}</span></div>
-                    <div className="flex justify-between text-sm"><span className="text-slate-400">Nội dung:</span><span className="font-bold text-[#2e4171]">{customer.name} - {customer.phone}</span></div>
+                    <div className="flex justify-between text-sm"><span className="text-slate-400">Nội dung:</span><span className="font-bold text-[#3b82f6]">{customer.name} - {customer.phone}</span></div>
                   </div>
                 </div>
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
-                    <Upload className="text-[#2e4171] w-5 h-5" />
+                    <Upload className="text-[#3b82f6] w-5 h-5" />
                     <h3 className="font-bold text-slate-800">Xác nhận chuyển khoản</h3>
                   </div>
                   <div className="relative">
                     <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" id="bill-upload" />
-                    <label htmlFor="bill-upload" className="flex flex-col items-center justify-center w-full p-8 border-2 border-dashed border-slate-200 rounded-3xl bg-white hover:border-[#2e4171] transition-all cursor-pointer">
+                    <label htmlFor="bill-upload" className="flex flex-col items-center justify-center w-full p-8 border-2 border-dashed border-slate-200 rounded-3xl bg-white hover:border-[#3b82f6] transition-all cursor-pointer">
                       {billPreview ? <img src={billPreview} alt="Bill preview" className="w-full aspect-video object-contain" /> : <p className="text-slate-400 text-sm">Bấm để tải ảnh bill tại đây</p>}
                     </label>
                   </div>
@@ -427,7 +423,7 @@ export default function App() {
                 <button onClick={() => setStep(2)} className="flex-1 py-4 bg-white text-slate-500 border border-slate-200 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
                   <ChevronLeft className="w-5 h-5" /> Quay lại
                 </button>
-                <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="flex-[2] py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-dark transition-all shadow-lg shadow-[#2e4171]/20 disabled:opacity-50">
+                <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="flex-[2] py-4 bg-[#3b82f6] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-[#3b82f6]/20 disabled:opacity-50">
                   {isSubmitting ? 'Đang gửi...' : 'Gửi đơn hàng'} <CheckCircle2 className="w-5 h-5" />
                 </button>
               </div>
