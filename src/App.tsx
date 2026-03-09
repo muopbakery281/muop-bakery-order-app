@@ -47,6 +47,41 @@ const BANK_INFO = {
   qrPlaceholder: "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=STK:333280188|BANK:ACB|AMOUNT:"
 };
 
+const PriceSummaryBox = ({ subtotal, shippingFee, total, onNext, nextLabel, showShipping = false, disabled = false }: any) => (
+  <div className="bg-[#f0f4ff] p-5 rounded-[24px] border border-[#dce4ff] space-y-3 mt-6">
+    <div className="space-y-2">
+      <div className="flex justify-between text-[15px] font-medium text-slate-600">
+        <span>Tạm tính:</span>
+        <span className="text-[#3b82f6] font-bold">{subtotal.toLocaleString()}đ</span>
+      </div>
+      
+      {/* Chỉ hiện phí ship khi ở Step 2 */}
+      {showShipping && shippingFee > 0 && ( // Chỉ hiện khi có phí ship > 0
+        <div className="flex justify-between text-[15px] font-medium text-slate-600">
+          <span>Phí giao hàng:</span>
+          <span>{shippingFee.toLocaleString()}đ</span>
+        </div>
+      )}
+
+      {/* Dòng Tổng cộng cuối cùng ở Step 2 */}
+      {showShipping && (
+        <div className="flex justify-between items-center pt-2 border-t border-blue-200">
+          <span className="font-bold text-slate-800">Tổng cộng:</span>
+          <span className="text-xl font-black text-[#3b82f6]">{total.toLocaleString()}đ</span>
+        </div>
+      )}
+    </div>
+
+    <button 
+      onClick={onNext} 
+      disabled={disabled}
+      className="w-full py-4 bg-[#3b82f6] text-white rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-blue-100 disabled:opacity-50"
+    >
+      {nextLabel} <ChevronRight className="w-5 h-5" />
+    </button>
+  </div>
+);
+
 const IS_CLOSED = false;
 
 // --- Main Component ---
@@ -270,19 +305,15 @@ export default function App() {
                   );
                 })}
               </div>
-              {cart.length > 0 && (
-                <div className="bg-[#eef2ff] p-4 rounded-2xl border border-[#dce4ff] space-y-3 mt-6">
-                  <div className="flex justify-between text-sm text-slate-600 font-medium">
-                    <span>Tạm tính:</span>
-                    <span className="text-[#3b82f6] font-bold">{subtotal.toLocaleString()}đ</span>
-                  </div>
-                  <button onClick={() => setStep(2)} className="w-full py-4 bg-[#3b82f6] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-[#3b82f6]/20">
-                    Tiếp tục đặt hàng <ChevronRight className="w-5 h-5" />
-                  </button>
-                </div>
-              )}
-            </motion.div>
-          )}
+          {cart.length > 0 && (
+                      <PriceSummaryBox 
+                        subtotal={subtotal} 
+                        onNext={() => setStep(2)} 
+                        nextLabel="Tiếp tục đặt hàng" 
+                      />
+                    )}
+                  </motion.div> 
+                )}
 
           {step === 2 && (
             <motion.div key="step2" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
@@ -371,17 +402,26 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex gap-4">
-                <button onClick={() => setStep(1)} className="flex-1 py-4 bg-white text-slate-500 border border-slate-200 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
-                  <ChevronLeft className="w-5 h-5" /> Quay lại
-                </button>
-                <button onClick={() => setStep(3)} disabled={!customer.name.trim() || !customer.phone.trim() || !customer.email.trim() || (customer.shippingMethod === 'delivery' && !customer.address.trim())} className="flex-[2] py-4 bg-[#3b82f6] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-[#2563eb] transition-all shadow-lg shadow-[#3b82f6]/20 disabled:opacity-50 disabled:grayscale">
-                  Thanh toán <ChevronRight className="w-5 h-5" />
-                </button>
-              </div>
-            </motion.div>
-          )}
+<PriceSummaryBox 
+      subtotal={subtotal} 
+      shippingFee={shippingFee} 
+      total={total} 
+      showShipping={true} 
+      onNext={() => setStep(3)} 
+      nextLabel="Thanh toán ngay"
+      disabled={!customer.name || !customer.phone || (customer.shippingMethod === 'delivery' && !customer.address)}
+    />
 
+    {/* Nút quay lại để dạng text đơn giản bên dưới box xanh cho đẹp */}
+    <button 
+      onClick={() => setStep(1)} 
+      className="w-full text-slate-400 font-bold text-sm mt-4 hover:text-[#3b82f6] transition-colors"
+    >
+      ← Quay lại
+    </button>
+  </motion.div>
+)}
+        
           {step === 3 && (
             <motion.div key="step3" initial={{ x: 20, opacity: 0 }} animate={{ x: 0, opacity: 1 }} exit={{ x: -20, opacity: 0 }} className="space-y-8">
               <div className="space-y-6">
