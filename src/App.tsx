@@ -378,10 +378,20 @@ if (IS_CLOSED) {
                   
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
-                        Số điện thoại<span className="text-red-500 ml-1">*</span>
+                      <label className="text-xs font-bold text-slate-400 uppercase tracking-wider text-black">
+                        Số điện thoại*
                       </label>
-                      <input type="tel" placeholder="09xx..." className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#3b82f6] outline-none transition-all text-black font-medium" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
+                      <input 
+                        type="tel" 
+                        placeholder="09xx..." 
+                        className="w-full p-3 bg-slate-50 border border-slate-100 rounded-xl focus:ring-2 focus:ring-[#3b82f6] outline-none transition-all text-black font-medium" 
+                        value={customer.phone} 
+                        onChange={e => {
+                          // CHẶN TẠI ĐÂY: Chỉ giữ lại các chữ số (0-9)
+                          const value = e.target.value.replace(/\D/g, '');
+                          setCustomer(prev => ({ ...prev, phone: value }));
+                        }} 
+                      />
                     </div>
                     <div className="space-y-1.5">
                       <label className="text-xs font-bold text-slate-400 uppercase tracking-wider">
