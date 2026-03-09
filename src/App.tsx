@@ -210,14 +210,19 @@ export default function App() {
     return (
       <div className="min-h-screen bg-[#eef2ff] font-sans pb-10 flex flex-col items-center justify-center">
          <div className="flex flex-col items-center pt-10 pb-6 text-center px-4 w-full max-w-md">
-            {/* Logo */}
-            <img src="/logo-muop.png" className="w-32 h-32 rounded-full border-4 border-white mb-6 shadow-md object-cover" alt="Mướp Bakery Logo" />
             
-            {/* Title & Description */}
-            <h1 className="text-2xl font-black text-[#2e4171] mb-3 leading-tight">
+            {/* Logo với khung tròn màu be #fffaee */}
+            <div className="w-36 h-36 bg-[#fffaee] rounded-full flex items-center justify-center mb-6 shadow-sm border-4 border-white">
+              <img src="/logo-muop.png" className="w-32 h-32 rounded-full object-cover" alt="Mướp Bakery Logo" />
+            </div>
+            
+            {/* Title trên cùng 1 dòng */}
+            <h1 className="text-[20px] font-black text-[#2e4171] mb-4 whitespace-nowrap">
               Cảm ơn bạn đã ghé thăm Mướp Bakery
             </h1>
-            <p className="text-slate-600 text-[15px] leading-relaxed mb-8 px-2">
+
+            {/* Mô tả ngắt làm 2 dòng */}
+            <p className="text-slate-600 text-[15px] leading-relaxed mb-8 px-4 max-w-[320px] mx-auto">
               Bánh của Mướp được làm thủ công, được nướng mới mỗi tuần để đảm bảo luôn có sẵn bánh tươi để phục vụ khách hàng.
             </p>
 
@@ -231,7 +236,7 @@ export default function App() {
                <div className="space-y-4">
                  <div className="flex items-start gap-3">
                    <div className="w-6 h-6 rounded-full bg-[#eef2ff] flex items-center justify-center mt-0.5">
-                     <span className="text-[#2e4171] text-xs font-bold">1</span>
+                     <span className="text-[#2e4171] text-[10px] font-bold">1</span>
                    </div>
                    <p className="text-slate-600 text-[15px]">
                      <span className="font-bold text-slate-800">Chốt order:</span> Thứ 4 hàng tuần
@@ -240,7 +245,7 @@ export default function App() {
                  
                  <div className="flex items-start gap-3">
                    <div className="w-6 h-6 rounded-full bg-[#eef2ff] flex items-center justify-center mt-0.5">
-                     <span className="text-[#2e4171] text-xs font-bold">2</span>
+                     <span className="text-[#2e4171] text-[10px] font-bold">2</span>
                    </div>
                    <p className="text-slate-600 text-[15px]">
                      <span className="font-bold text-slate-800">Giao bánh:</span> Thứ 7 & Chủ Nhật hàng tuần
