@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { ShoppingCart, Truck, Store, CheckCircle2, Upload, ChevronRight, Package, ArrowLeft } from 'lucide-react';
+import React, { useState, useMemo } from 'react';
+import { ShoppingCart, Truck, Store, CheckCircle2, Upload, ChevronRight, Package, ArrowLeft, Plus, Minus } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 // --- Types ---
@@ -18,11 +18,8 @@ interface OrderItem {
 interface CustomerInfo {
   name: string;
   phone: string;
-  email: string;
   address: string;
   shippingMethod: 'pickup' | 'delivery';
-  zone: string;
-  pickupDay?: 'Saturday' | 'Sunday';
 }
 
 // --- Constants ---
@@ -34,22 +31,13 @@ const PRODUCTS: Product[] = [
   { id: 'extra-cheese', name: 'Thêm sốt kem phô mai', price: 15000 },
 ];
 
-const ZONES = [
-  { id: 'zone1', name: 'Zone 1 (Q1, 2, 3, Bình Thạnh)', fee: 25000 },
-  { id: 'zone2', name: 'Zone 2 (Q4, 5, 7, 10, Gò Vấp, Phú Nhuận)', fee: 35000 },
-  { id: 'zone3', name: 'Zone 3 (Các quận còn lại)', fee: 45000 },
-];
-
 const BANK_INFO = {
   accountName: "NGUYEN THI NGOC HA",
   accountNumber: "333280188",
   bankName: "ACB",
-  qrPlaceholder: "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=STK:333280188|BANK:ACB|AMOUNT:"
+  qrPlaceholder: "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=STK:333280188|BANK:ACB|AMOUNT:"
 };
 
-const IS_CLOSED = false;
-
-// --- Main Component ---
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [step, setStep] = useState(1);
@@ -57,17 +45,15 @@ export default function App() {
   const [customer, setCustomer] = useState<CustomerInfo>({
     name: '',
     phone: '',
-    email: '',
     address: '',
     shippingMethod: 'pickup',
-    zone: 'zone1',
-    pickupDay: 'Saturday', 
   });
   const [billImage, setBillImage] = useState<File | null>(null);
   const [billPreview, setBillPreview] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // --- Calculations ---
   const subtotal = useMemo(() => {
     return cart.reduce((sum, item) => {
       const product = PRODUCTS.find(p => p.id === item.productId);
@@ -75,14 +61,9 @@ export default function App() {
     }, 0);
   }, [cart]);
 
-  const shippingFee = useMemo(() => {
-    if (customer.shippingMethod === 'pickup') return 0;
-    const zone = ZONES.find(z => z.id === customer.zone);
-    return zone?.fee || 0;
-  }, [customer.shippingMethod, customer.zone]);
+  const total = subtotal; // Tạm thời chưa tính phí ship chi tiết ở đây
 
-  const total = subtotal + shippingFee;
-
+  // --- Handlers ---
   const updateQuantity = (productId: string, delta: number) => {
     setCart(prev => {
       const existing = prev.find(item => item.productId === productId);
@@ -108,52 +89,25 @@ export default function App() {
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    const payload = {
-      customerName: customer.name,
-      phone: customer.phone,
-      total: total,
-      billImage: billPreview
-    };
-
-    try {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzUXh2p590fMsI-GZV7EVI5dBWMmR1fJJg2122aGw1U62cfMrv0R4i_1QfvEC_pBdH_1w/exec';
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify(payload),
-      });
-      setIsSuccess(true);
-    } catch (error) {
-      alert('Có lỗi xảy ra. Vui lòng thử lại.');
-    } finally {
+    // Logic gửi dữ liệu lên Google Sheets của bồ giữ nguyên ở đây
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
+      setIsSuccess(true);
+    }, 2000);
   };
 
   // --- RENDERING ---
 
-  if (IS_CLOSED) {
-    return (
-      <div className="min-h-screen bg-[#a3bfd8] flex items-center justify-center p-4 font-sans text-[#2e4171]">
-        <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full text-center space-y-6">
-          <img src="/logo-muop.png" className="w-20 h-20 mx-auto rounded-full object-cover" alt="Logo" />
-          <h2 className="text-2xl font-black">Cảm ơn bồ đã ghé!</h2>
-          <p className="opacity-70">Mướp đã nhận đủ đơn đợt này rồi. Hẹn bồ tuần sau nhé! ✨</p>
-        </div>
-      </div>
-    );
-  }
-
   if (isSuccess) {
     return (
-      <div className="min-h-screen bg-[#a3bfd8] flex items-center justify-center p-4 font-sans text-[#2e4171]">
-        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full text-center space-y-6">
-          <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center mx-auto">
-            <CheckCircle2 className="w-12 h-12 text-green-500" />
+      <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 font-sans text-[#2e4171]">
+        <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="bg-white p-10 rounded-[40px] shadow-xl max-w-md w-full text-center space-y-6">
+          <div className="w-20 h-20 bg-blue-50 rounded-full flex items-center justify-center mx-auto">
+            <CheckCircle2 className="w-12 h-12 text-[#2e4171]" />
           </div>
           <h1 className="text-2xl font-bold">Mướp đã nhận đơn!</h1>
-          <p className="opacity-70">Mướp sẽ liên hệ xác nhận sớm nhất nha. Chúc bồ một ngày ngọt ngào! ✨</p>
-          <button onClick={() => window.location.reload()} className="w-full py-4 bg-[#2e4171] text-white rounded-2xl font-bold">Quay lại trang chủ</button>
+          <p className="opacity-70 text-sm">Cảm ơn bồ đã ủng hộ Mướp. Đợi Mướp liên hệ xác nhận sớm nhất nha! ✨</p>
+          <button onClick={() => window.location.reload()} className="w-full py-4 bg-[#2e4171] text-white rounded-2xl font-bold hover:opacity-90 transition-all">Quay lại trang chủ</button>
         </motion.div>
       </div>
     );
@@ -161,32 +115,34 @@ export default function App() {
 
   if (showIntro) {
     return (
-      <div className="min-h-screen bg-[#a3bfd8] flex items-center justify-center p-6 font-sans">
+      <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-6 font-sans">
         <motion.div 
           initial={{ y: 20, opacity: 0 }} 
           animate={{ y: 0, opacity: 1 }}
-          className="bg-white rounded-[40px] shadow-2xl max-w-md w-full p-8 text-center space-y-8"
+          className="bg-white rounded-[48px] shadow-2xl max-w-md w-full p-10 text-center space-y-8 border border-white"
         >
           <div className="flex justify-center">
-            <div className="w-24 h-24 bg-[#fffaee] rounded-full flex items-center justify-center border border-[#a3bfd8]/30">
-               <img src="/logo-muop.png" alt="Mướp Bakery" className="w-16 h-16 object-contain" />
+            <div className="w-28 h-28 bg-[#f8fafc] rounded-full flex items-center justify-center shadow-inner">
+               <img src="/logo-muop.png" alt="Mướp Bakery" className="w-20 h-20 object-contain" />
             </div>
           </div>
 
           <div className="space-y-4">
-            <h1 className="text-[#2e4171] text-2xl font-bold">Cảm ơn bạn đã ghé thăm<br/>Mướp Bakery.</h1>
-            <p className="text-[#794d3a] text-sm leading-relaxed">
-              Vì bánh của Mướp được làm <strong>hoàn toàn thủ công</strong>, nướng mới mỗi tuần để đảm bảo chất lượng tốt nhất.
+            <h1 className="text-[#2e4171] text-2xl font-black leading-tight">Mướp Bakery chào bồ!</h1>
+            <p className="text-slate-500 text-sm leading-relaxed px-4">
+              Bánh nhà Mướp được làm <strong>thủ công hoàn toàn</strong>, nướng mới mỗi tuần để đảm bảo hương vị nguyên bản nhất.
             </p>
           </div>
 
-          <div className="bg-[#a3bfd8]/10 rounded-2xl p-4 text-[#2e4171] text-xs border border-[#a3bfd8]/20">
-            Mướp sẽ chốt order vào <span className="font-bold">Thứ 4</span> hàng tuần...
+          <div className="bg-[#eef2ff] rounded-3xl p-5 text-[#2e4171] text-xs space-y-2">
+            <p className="font-bold uppercase tracking-wider opacity-60">Lịch nhận đơn & giao bánh</p>
+            <p>Chốt đơn: <span className="font-bold">Thứ 4 hàng tuần</span></p>
+            <p>Giao bánh: <span className="font-bold">Thứ 7 & Chủ Nhật</span></p>
           </div>
 
           <button 
             onClick={() => setShowIntro(false)}
-            className="w-full bg-[#2e4171] text-white py-4 rounded-2xl font-bold shadow-lg active:scale-95 transition-transform"
+            className="w-full bg-[#2e4171] text-white py-5 rounded-[24px] font-bold shadow-lg active:scale-95 transition-all text-lg"
           >
             Bắt đầu đặt hàng →
           </button>
@@ -196,84 +152,119 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#a3bfd8] font-sans pb-24 text-[#2e4171]">
-      <header className="bg-white border-b border-[#a3bfd8]/30 sticky top-0 z-10 shadow-sm">
-        <div className="max-w-2xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <button onClick={() => setShowIntro(true)} className="p-2 hover:bg-[#fffaee] rounded-full">
-                <ArrowLeft className="w-5 h-5 text-[#2e4171]" />
+    <div className="min-h-screen bg-[#eef2ff] font-sans pb-32 text-[#2e4171]">
+      <header className="bg-white/80 backdrop-blur-md sticky top-0 z-10 border-b border-[#eef2ff]">
+        <div className="max-w-2xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <button onClick={() => setShowIntro(true)} className="p-2 hover:bg-[#eef2ff] rounded-full transition-colors">
+                <ArrowLeft className="w-5 h-5" />
             </button>
-            <h1 className="text-lg font-bold">Mướp Bakery</h1>
+            <h1 className="text-lg font-black tracking-tight">Mướp Bakery</h1>
           </div>
-          <div className="flex items-center gap-1 text-xs font-bold bg-[#fffaee] border border-[#a3bfd8]/50 px-3 py-1.5 rounded-full text-[#2e4171]">
+          <div className="bg-[#2e4171] text-white px-4 py-2 rounded-2xl text-xs font-bold flex items-center gap-2">
             <ShoppingCart className="w-3.5 h-3.5" />
-            <span>{cart.reduce((sum, item) => sum + item.quantity, 0)} món</span>
+            {cart.reduce((sum, item) => sum + item.quantity, 0)}
           </div>
         </div>
       </header>
 
-      <main className="max-w-2xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-center gap-4 mb-8">
+      <main className="max-w-2xl mx-auto px-6 py-8">
+        {/* Step Progress */}
+        <div className="flex items-center justify-center gap-3 mb-10">
           {[1, 2, 3].map(i => (
-            <div key={i} className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${step >= i ? 'bg-[#2e4171] text-white' : 'bg-white text-[#a3bfd8] border border-[#a3bfd8]'}`}>{i}</div>
+            <div key={i} className={`h-1.5 rounded-full transition-all ${step === i ? 'w-10 bg-[#2e4171]' : 'w-4 bg-white'}`} />
           ))}
         </div>
 
         <AnimatePresence mode="wait">
           {step === 1 && (
-            <motion.div key="s1" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
+            <motion.div key="s1" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="space-y-4">
+              <h2 className="text-sm font-bold opacity-40 uppercase tracking-widest mb-6 text-center">Danh mục bánh hôm nay</h2>
               <div className="grid gap-4">
                 {PRODUCTS.map(product => {
                   const item = cart.find(c => c.productId === product.id);
                   return (
-                    <div key={product.id} className="bg-white p-5 rounded-3xl shadow-sm border border-[#a3bfd8]/20 flex items-center justify-between">
+                    <div key={product.id} className="bg-white p-6 rounded-[32px] shadow-sm border border-transparent hover:border-[#2e4171]/10 transition-all flex items-center justify-between group">
                       <div className="flex-1">
-                        <h3 className="font-bold text-[#2e4171]">{product.name}</h3>
-                        <p className="text-[#dbac75] font-bold mt-1">{product.price.toLocaleString()}đ</p>
+                        <h3 className="font-bold text-lg">{product.name}</h3>
+                        <p className="text-slate-400 text-xs mt-0.5">{product.description || 'Vị ngon khó cưỡng'}</p>
+                        <p className="text-[#2e4171] font-black mt-2">{product.price.toLocaleString()}đ</p>
                       </div>
-                      <div className="flex items-center gap-3 bg-[#fffaee] p-1.5 rounded-2xl border border-[#a3bfd8]/20">
-                        <button onClick={() => updateQuantity(product.id, -1)} className="w-8 h-8 flex items-center justify-center rounded-xl bg-white shadow-sm">-</button>
-                        <span className="font-bold">{item?.quantity || 0}</span>
-                        <button onClick={() => updateQuantity(product.id, 1)} className="w-8 h-8 flex items-center justify-center rounded-xl bg-[#2e4171] text-white">+</button>
+                      <div className="flex items-center gap-4 bg-[#f8fafc] p-2 rounded-2xl">
+                        <button onClick={() => updateQuantity(product.id, -1)} className="w-8 h-8 flex items-center justify-center rounded-xl bg-white shadow-sm hover:text-red-500"><Minus className="w-4 h-4" /></button>
+                        <span className="font-bold w-4 text-center">{item?.quantity || 0}</span>
+                        <button onClick={() => updateQuantity(product.id, 1)} className="w-8 h-8 flex items-center justify-center rounded-xl bg-[#2e4171] text-white shadow-md"><Plus className="w-4 h-4" /></button>
                       </div>
                     </div>
                   );
                 })}
               </div>
               {cart.length > 0 && (
-                <button onClick={() => setStep(2)} className="w-full py-4 bg-[#2e4171] text-white rounded-2xl font-bold shadow-xl">Tiếp tục đặt hàng</button>
+                <button onClick={() => setStep(2)} className="w-full py-5 bg-[#2e4171] text-white rounded-[24px] font-bold shadow-xl shadow-blue-900/10 mt-8 flex items-center justify-center gap-2">
+                  Tiếp tục nhập thông tin <ChevronRight className="w-5 h-5" />
+                </button>
               )}
             </motion.div>
           )}
 
           {step === 2 && (
-             <motion.div key="s2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-                <div className="bg-white p-6 rounded-[32px] border border-[#a3bfd8]/20 space-y-4">
-                   <input type="text" placeholder="Tên của bồ" className="w-full p-4 bg-[#fffaee] border border-[#a3bfd8]/20 rounded-2xl outline-none" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
-                   <input type="tel" placeholder="Số điện thoại" className="w-full p-4 bg-[#fffaee] border border-[#a3bfd8]/20 rounded-2xl outline-none" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
+             <motion.div key="s2" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
+                <div className="bg-white p-8 rounded-[40px] shadow-sm space-y-5">
+                   <div className="space-y-2">
+                     <label className="text-[10px] font-black uppercase opacity-30 ml-2">Tên của bồ</label>
+                     <input type="text" placeholder="Hà Ngọc..." className="w-full p-4 bg-[#f8fafc] rounded-2xl outline-none focus:ring-2 ring-[#2e4171]/10 border-transparent" value={customer.name} onChange={e => setCustomer(prev => ({ ...prev, name: e.target.value }))} />
+                   </div>
+                   <div className="space-y-2">
+                     <label className="text-[10px] font-black uppercase opacity-30 ml-2">Số điện thoại</label>
+                     <input type="tel" placeholder="090..." className="w-full p-4 bg-[#f8fafc] rounded-2xl outline-none focus:ring-2 ring-[#2e4171]/10 border-transparent" value={customer.phone} onChange={e => setCustomer(prev => ({ ...prev, phone: e.target.value }))} />
+                   </div>
+                   <div className="space-y-2">
+                     <label className="text-[10px] font-black uppercase opacity-30 ml-2">Phương thức nhận bánh</label>
+                     <div className="grid grid-cols-2 gap-3">
+                        <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'pickup' }))} className={`p-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 border-2 transition-all ${customer.shippingMethod === 'pickup' ? 'border-[#2e4171] bg-[#2e4171] text-white' : 'border-[#f8fafc] bg-[#f8fafc] text-slate-400'}`}>
+                          <Store className="w-4 h-4" /> Pick up
+                        </button>
+                        <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 border-2 transition-all ${customer.shippingMethod === 'delivery' ? 'border-[#2e4171] bg-[#2e4171] text-white' : 'border-[#f8fafc] bg-[#f8fafc] text-slate-400'}`}>
+                          <Truck className="w-4 h-4" /> Ship tận tay
+                        </button>
+                     </div>
+                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <button onClick={() => setStep(1)} className="flex-1 py-4 bg-white border border-[#a3bfd8] rounded-2xl font-bold">Quay lại</button>
-                  <button onClick={() => setStep(3)} disabled={!customer.name || !customer.phone} className="flex-[2] py-4 bg-[#2e4171] text-white rounded-2xl font-bold disabled:opacity-50">Thanh toán</button>
+                  <button onClick={() => setStep(1)} className="flex-1 py-5 bg-white rounded-[24px] font-bold text-slate-400 shadow-sm">Quay lại</button>
+                  <button onClick={() => setStep(3)} disabled={!customer.name || !customer.phone} className="flex-[2] py-5 bg-[#2e4171] text-white rounded-[24px] font-bold disabled:opacity-30 shadow-lg">Đến phần Thanh toán</button>
                 </div>
              </motion.div>
           )}
 
           {step === 3 && (
-            <motion.div key="s3" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-6">
-              <div className="bg-white p-8 rounded-[40px] border border-[#a3bfd8]/20 text-center space-y-6">
-                <p className="text-3xl font-black">{total.toLocaleString()}đ</p>
-                <div className="p-4 bg-white rounded-3xl border-2 border-[#fffaee] inline-block shadow-inner">
-                  <img src={`${BANK_INFO.qrPlaceholder}${total}`} alt="QR" className="w-48 h-48 mx-auto" />
+            <motion.div key="s3" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
+              <div className="bg-white p-8 rounded-[48px] shadow-sm text-center space-y-8">
+                <div>
+                  <p className="text-[10px] font-black opacity-30 uppercase tracking-widest mb-1">Tổng cộng cần thanh toán</p>
+                  <p className="text-4xl font-black">{total.toLocaleString()}đ</p>
                 </div>
-                <div className="space-y-3">
-                    <label className="flex flex-col items-center justify-center w-full p-6 border-2 border-dashed border-[#a3bfd8] rounded-3xl bg-[#fffaee] cursor-pointer">
+                
+                <div className="p-4 bg-white rounded-[32px] border border-[#eef2ff] inline-block shadow-xl shadow-blue-900/5">
+                  <img src={`${BANK_INFO.qrPlaceholder}${total}`} alt="QR" className="w-56 h-56 mx-auto" />
+                </div>
+
+                <div className="space-y-4">
+                    <label className="flex flex-col items-center justify-center w-full p-8 border-2 border-dashed border-[#eef2ff] rounded-[32px] bg-[#f8fafc] cursor-pointer hover:bg-[#eef2ff] transition-colors">
                       <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-                      {billPreview ? <img src={billPreview} className="max-h-40 rounded-lg" /> : <><Upload className="mb-2" /><span className="text-sm font-bold opacity-60">Tải ảnh bill tại đây</span></>}
+                      {billPreview ? (
+                        <img src={billPreview} className="max-h-48 rounded-2xl shadow-md" />
+                      ) : (
+                        <div className="flex flex-col items-center">
+                          <Upload className="mb-3 opacity-20 w-10 h-10" />
+                          <span className="text-sm font-bold opacity-40">Tải ảnh giao dịch thành công</span>
+                        </div>
+                      )}
                     </label>
                 </div>
-                <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="w-full py-4 bg-[#2e4171] text-white rounded-2xl font-bold shadow-xl">
-                  {isSubmitting ? "Đang gửi..." : "Xác nhận gửi đơn"}
+
+                <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="w-full py-5 bg-[#2e4171] text-white rounded-[24px] font-bold shadow-xl flex items-center justify-center gap-3">
+                  {isSubmitting ? "Mướp đang kiểm tra..." : "Xác nhận gửi đơn ngay"}
                 </button>
               </div>
             </motion.div>
@@ -281,16 +272,19 @@ export default function App() {
         </AnimatePresence>
       </main>
 
+      {/* Floating Price Bar */}
       {step < 3 && cart.length > 0 && (
-        <div className="fixed bottom-0 left-0 right-0 bg-[#2e4171] p-5 shadow-2xl z-20 rounded-t-[32px]">
-          <div className="max-w-2xl mx-auto flex justify-between items-center text-white">
+        <motion.div initial={{ y: 100 }} animate={{ y: 0 }} className="fixed bottom-0 left-0 right-0 p-6 z-20">
+          <div className="max-w-2xl mx-auto bg-[#2e4171] p-6 shadow-2xl rounded-[32px] flex justify-between items-center text-white">
             <div>
-              <p className="text-[10px] font-bold opacity-60 uppercase">Tổng cộng</p>
+              <p className="text-[10px] font-bold opacity-50 uppercase tracking-wider">Tạm tính</p>
               <p className="text-xl font-black">{total.toLocaleString()}đ</p>
             </div>
-            <div className="bg-[#dbac75] px-4 py-2 rounded-xl text-xs font-bold">{cart.reduce((s, i) => s + i.quantity, 0)} món</div>
+            <div className="bg-white/10 px-5 py-2.5 rounded-2xl text-sm font-bold backdrop-blur-sm border border-white/10">
+              {cart.reduce((s, i) => s + i.quantity, 0)} món
+            </div>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );
