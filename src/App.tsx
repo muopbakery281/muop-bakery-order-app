@@ -47,6 +47,11 @@ const BANK_INFO = {
   qrPlaceholder: "https://i.postimg.cc/ZKvNCc7K/qr.png"
 };
 
+const SOCIAL_LINKS = {
+  facebook: "https://facebook.com/muop.bakery", // Thay link thiệt của bồ vô đây
+  instagram: "https://instagram.com/muop.bakery",
+};
+
 const PriceSummaryBox = ({ subtotal, shippingFee, total, onNext, nextLabel, showShipping = false, disabled = false }: any) => (
   <div className="bg-[#f0f4ff] p-5 rounded-[24px] border border-[#dce4ff] space-y-3 mt-6">
     <div className="space-y-2">
@@ -181,17 +186,25 @@ export default function App() {
     }
   };
 
-  if (IS_CLOSED) {
-    return (
-      <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 font-sans text-center">
-        <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
-          <img src="/logo-muop.png" className="w-20 h-20 mx-auto rounded-full shadow-md object-cover" alt="Logo" />
-          <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bồ đã ghé!</h2>
-          <p className="text-slate-600">Mướp đã nhận đủ đơn đợt này rồi. Hẹn bồ tuần sau nhé! ✨</p>
+if (IS_CLOSED) {
+  return (
+    <div className="min-h-screen bg-[#eef2ff] flex items-center justify-center p-4 text-center">
+      <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full space-y-6">
+        <img src="/logo-muop.png" className="w-24 h-24 mx-auto rounded-full shadow-md" alt="Logo" />
+        <h2 className="text-2xl font-black text-[#3b82f6]">Cảm ơn bồ đã ghé!</h2>
+        <p className="text-slate-600 italic">"Mướp đã nhận đủ đơn cho đợt này rồi. Hẹn bồ tuần sau nhé! ✨"</p>
+        
+        <div className="pt-4 border-t border-slate-50">
+          <p className="text-sm text-slate-400 mb-4">Theo dõi Mướp để không bỏ lỡ đợt đặt bánh tới nha:</p>
+          <div className="flex justify-center gap-4">
+            <a href={SOCIAL_LINKS.facebook} className="px-4 py-2 bg-[#eef2ff] text-[#3b82f6] rounded-xl font-bold text-sm">Facebook</a>
+            <a href={SOCIAL_LINKS.instagram} className="px-4 py-2 bg-[#fef2f2] text-[#ec4899] rounded-xl font-bold text-sm">Instagram</a>
+          </div>
         </div>
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   if (isSuccess) {
     return (
