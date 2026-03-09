@@ -208,7 +208,7 @@ if (IS_CLOSED) {
           </div>
         </div>
       </div>
-    </div>
+  
   );
 }
 
