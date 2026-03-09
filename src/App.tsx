@@ -245,7 +245,7 @@ if (IS_CLOSED) {
     );
   }
 
-  if (show) {
+  if (showIntro) {
     return (
       <div className="min-h-screen bg-[#eef2ff] font-sans pb-10 flex flex-col items-center justify-center">
          <div className="flex flex-col items-center pt-10 pb-6 text-center px-4 w-full max-w-xl">
