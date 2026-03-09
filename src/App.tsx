@@ -151,7 +151,7 @@ export default function App() {
       <div className="min-h-screen bg-muop-blue flex items-center justify-center p-4 font-sans">
         <div className="bg-white p-8 rounded-[32px] shadow-xl max-w-md w-full text-center space-y-6">
           <img src="/logo-muop.png" className="w-20 h-20 mx-auto rounded-full shadow-md object-cover" alt="Logo" />
-          <h2 className="text-2xl font-black text-muop-dark">Cảm ơn bồ đã ghé!</h2>
+          <h2 className="text-2xl font-black text-muop-blue">Cảm ơn bồ đã ghé!</h2>
           <p className="text-slate-600">Mướp đã nhận đủ đơn đợt này rồi. Hẹn bồ tuần sau nhé! ✨</p>
           <div className="flex flex-col gap-2">
             <a href="https://facebook.com/muop.bakery" className="py-3 bg-[#1877F2] text-white rounded-xl font-bold">Facebook</a>
@@ -169,9 +169,9 @@ export default function App() {
           <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto">
             <CheckCircle2 className="w-12 h-12 text-green-500" />
           </div>
-          <h1 className="text-2xl font-bold text-muop-dark">Cảm ơn bồ, Mướp đã nhận đơn!</h1>
+          <h1 className="text-2xl font-bold text-muop-blue">Cảm ơn bồ, Mướp đã nhận đơn!</h1>
           <p className="text-slate-600">Mướp sẽ kiểm tra bill và liên hệ xác nhận sớm nhất nha. ✨</p>
-          <button onClick={() => window.location.reload()} className="w-full py-3 bg-[#2e4171] text-white rounded-xl font-semibold hover:bg-muop-dark transition-colors">
+          <button onClick={() => window.location.reload()} className="w-full py-3 bg-[#2e4171] text-white rounded-xl font-semibold hover:bg-muop-blue transition-colors">
             Quay lại trang chủ
           </button>
         </motion.div>
@@ -225,7 +225,7 @@ export default function App() {
             <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center border-2 border-muop-blue/50">
               <img src="/logo-muop.png" alt="Mướp Bakery Logo" className="w-full h-full object-cover" />
             </div>
-            <h1 className="text-xl font-bold text-muop-dark tracking-tight">Mướp Bakery</h1>
+            <h1 className="text-xl font-bold text-muop-blue tracking-tight">Mướp Bakery</h1>
           </div>
           <div className="flex items-center gap-1 text-sm font-medium text-[#2e4171] bg-muop-blue/30 px-3 py-1.5 rounded-full">
             <ShoppingCart className="w-4 h-4" />
@@ -267,8 +267,8 @@ export default function App() {
                       </div>
                       <div className="flex items-center gap-3 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
                         <button type="button" onClick={(e) => { e.preventDefault(); updateQuantity(product.id, -1); }} className="w-8 h-8 flex items-center justify-center rounded-lg bg-white shadow-sm text-slate-600 hover:text-[#2e4171] active:scale-90 transition-transform">-</button>
-                        <span className="w-6 text-center font-black text-muop-dark">{item?.quantity || 0}</span>
-                        <button type="button" onClick={(e) => { e.preventDefault(); updateQuantity(product.id, 1); }} className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#2e4171] text-white shadow-sm hover:bg-muop-dark active:scale-90 transition-transform">+</button>
+                        <span className="w-6 text-center font-black text-muop-blue">{item?.quantity || 0}</span>
+                        <button type="button" onClick={(e) => { e.preventDefault(); updateQuantity(product.id, 1); }} className="w-8 h-8 flex items-center justify-center rounded-lg bg-[#2e4171] text-white shadow-sm hover:bg-muop-blue active:scale-90 transition-transform">+</button>
                       </div>
                     </div>
                   );
@@ -278,9 +278,9 @@ export default function App() {
                 <div className="bg-muop-blue/20 p-4 rounded-2xl border border-muop-blue/30 space-y-3 mt-6">
                   <div className="flex justify-between text-sm text-slate-600 font-medium">
                     <span>Tạm tính:</span>
-                    <span className="text-muop-dark">{subtotal.toLocaleString()}đ</span>
+                    <span className="text-muop-blue">{subtotal.toLocaleString()}đ</span>
                   </div>
-                  <button onClick={() => setStep(2)} className="w-full py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-dark transition-all shadow-lg shadow-[#2e4171]/20">
+                  <button onClick={() => setStep(2)} className="w-full py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-blue transition-all shadow-lg shadow-[#2e4171]/20">
                     Tiếp tục đặt hàng <ChevronRight className="w-5 h-5" />
                   </button>
                 </div>
@@ -298,11 +298,11 @@ export default function App() {
       <div className="grid grid-cols-2 gap-4">
         <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'pickup' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'pickup' ? 'border-[#2e4171] bg-muop-blue/20' : 'border-slate-100 bg-white'}`}>
           <Store className={customer.shippingMethod === 'pickup' ? 'text-[#2e4171]' : 'text-slate-400'} />
-          <span className="font-bold text-sm">Pick up tại tiệm</span>
+          <span className="font-bold text-[#2e4171]">Pick up tại tiệm</span>
         </button>
         <button onClick={() => setCustomer(prev => ({ ...prev, shippingMethod: 'delivery' }))} className={`p-4 rounded-2xl border-2 transition-all flex flex-col items-center gap-2 ${customer.shippingMethod === 'delivery' ? 'border-[#2e4171] bg-muop-blue/20' : 'border-slate-100 bg-white'}`}>
           <Truck className={customer.shippingMethod === 'delivery' ? 'text-[#2e4171]' : 'text-slate-400'} />
-          <span className="font-bold text-sm">Giao hàng tận nơi</span>
+          <span className="font-bold text-[#2e4171]">Giao hàng tận nơi</span>
         </button>
       </div>
 
@@ -331,24 +331,24 @@ export default function App() {
 
         {customer.shippingMethod === 'pickup' && (
           <div className="space-y-4 pt-4 border-t border-slate-50 animate-fade-in-up">
-            <label className="text-xs font-bold uppercase tracking-wider text-muop-dark">
+            <label className="text-xs font-bold uppercase tracking-wider text-muop-blue">
               Bồ muốn pick up tại Mướp vào ngày nào?<span className="text-red-500 ml-1">*</span>
             </label>
             <div className="grid grid-cols-1 gap-3">
-              <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Saturday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Saturday' ? 'border-[#2e4171] bg-muop-blue/20 text-muop-dark' : 'border-slate-100 bg-white text-slate-400'}`}>
+              <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Saturday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Saturday' ? 'border-[#2e4171] bg-muop-blue/20 text-muop-blue' : 'border-slate-100 bg-white text-slate-400'}`}>
                 <div className="flex justify-between w-full">
                   <span>Thứ 7 (13:00 - 17:00)</span>
                   {customer.pickupDay === 'Saturday' && <CheckCircle2 className="w-4 h-4 text-[#2e4171]" />}
                 </div>
-                <span className="text-[11px] font-medium opacity-80">📍 Địa chỉ: 123/A Bình Thạnh, TP.HCM</span>
+                <span className="text-[11px] font-medium opacity-80">📍 Địa chỉ: 179 Chu Văn An, Phường 26, Quận Bình Thạnh, TP.HCM</span>
               </button>
               
-              <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Sunday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Sunday' ? 'border-[#2e4171] bg-muop-blue/20 text-muop-dark' : 'border-slate-100 bg-white text-slate-400'}`}>
+              <button type="button" onClick={() => setCustomer(prev => ({ ...prev, pickupDay: 'Sunday' }))} className={`p-4 rounded-2xl border-2 text-sm font-bold transition-all flex flex-col items-start gap-1 ${customer.pickupDay === 'Sunday' ? 'border-[#2e4171] bg-muop-blue/20 text-muop-blue' : 'border-slate-100 bg-white text-slate-400'}`}>
                 <div className="flex justify-between w-full">
                   <span>Chủ nhật (13:00 - 17:00)</span>
                   {customer.pickupDay === 'Sunday' && <CheckCircle2 className="w-4 h-4 text-[#2e4171]" />}
                 </div>
-                <span className="text-[11px] font-medium opacity-80">📍 Địa chỉ: 456/B Phường Thảo Điền, Quận 2</span>
+                <span className="text-[11px] font-medium opacity-80">📍 Địa chỉ: 205 Đường số 5, KĐT Lakeview City, Phường An Phú, Quận 2, TP.HCM</span>
               </button>
             </div>
           </div>
@@ -379,7 +379,7 @@ export default function App() {
                 <button onClick={() => setStep(1)} className="flex-1 py-4 bg-white text-slate-500 border border-slate-200 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
                   <ChevronLeft className="w-5 h-5" /> Quay lại
                 </button>
-                <button onClick={() => setStep(3)} disabled={!customer.name.trim() || !customer.phone.trim() || !customer.email.trim() || (customer.shippingMethod === 'delivery' && !customer.address.trim())} className="flex-[2] py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-dark transition-all shadow-lg shadow-[#2e4171]/20 disabled:opacity-50 disabled:grayscale">
+                <button onClick={() => setStep(3)} disabled={!customer.name.trim() || !customer.phone.trim() || !customer.email.trim() || (customer.shippingMethod === 'delivery' && !customer.address.trim())} className="flex-[2] py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-blue transition-all shadow-lg shadow-[#2e4171]/20 disabled:opacity-50 disabled:grayscale">
                   Thanh toán <ChevronRight className="w-5 h-5" />
                 </button>
               </div>
@@ -400,7 +400,7 @@ export default function App() {
                     </div>
                     <div className="text-center space-y-1">
                       <p className="text-sm text-slate-500">Quét mã để thanh toán nhanh</p>
-                      <p className="font-bold text-muop-dark text-xl">{total.toLocaleString()}đ</p>
+                      <p className="font-bold text-muop-blue text-xl">{total.toLocaleString()}đ</p>
                     </div>
                   </div>
                   <div className="border-t border-slate-50 pt-6 space-y-3">
@@ -427,7 +427,7 @@ export default function App() {
                 <button onClick={() => setStep(2)} className="flex-1 py-4 bg-white text-slate-500 border border-slate-200 rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-slate-50 transition-all">
                   <ChevronLeft className="w-5 h-5" /> Quay lại
                 </button>
-                <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="flex-[2] py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-dark transition-all shadow-lg shadow-[#2e4171]/20 disabled:opacity-50">
+                <button onClick={handleSubmit} disabled={!billImage || isSubmitting} className="flex-[2] py-4 bg-[#2e4171] text-white rounded-xl font-bold flex items-center justify-center gap-2 hover:bg-muop-blue transition-all shadow-lg shadow-[#2e4171]/20 disabled:opacity-50">
                   {isSubmitting ? 'Đang gửi...' : 'Gửi đơn hàng'} <CheckCircle2 className="w-5 h-5" />
                 </button>
               </div>
