@@ -28,10 +28,10 @@ interface CustomerInfo {
 // --- Constants ---
 const PRODUCTS: Product[] = [
   { id: 'brownie-classic', name: 'Brownie Truyền thống', price: 75000, description: 'Hộp 150g' },
-  { id: 'brownie-almond', name: 'Brownie Hạnh nhân', price: 80000 },
-  { id: 'brownie-cinnamon', name: 'Brownie Quế giòn', price: 80000 },
-  { id: 'brownie-cheese-dip', name: 'Brownie Chấm kem phô mai', price: 85000 },
-  { id: 'extra-cheese', name: 'Thêm sốt kem phô mai', price: 15000 },
+  { id: 'brownie-almond', name: 'Brownie Hạnh nhân', price: 80000, description: 'Hộp 150g'},
+  { id: 'brownie-cinnamon', name: 'Brownie Quế giòn', price: 80000, description: 'Hộp 150g' },
+  { id: 'brownie-cheese-dip', name: 'Brownie Chấm kem phô mai', price: 85000, description: 'Hộp 150g' },
+  { id: 'extra-cheese', name: 'Thêm sốt kem phô mai', price: 15000, description: 'Hũ 30g' },
 ];
 
 const ZONES = [
@@ -44,7 +44,7 @@ const BANK_INFO = {
   accountName: "NGUYEN THI NGOC HA",
   accountNumber: "333280188",
   bankName: "ACB",
-  qrPlaceholder: "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=STK:333280188|BANK:ACB|AMOUNT:"
+  qrPlaceholder: "https://lh3.googleusercontent.com/d/1KZixWBKHZJRA_H-NQKMpexw2ToYL_G-Z"
 };
 
 const PriceSummaryBox = ({ subtotal, shippingFee, total, onNext, nextLabel, showShipping = false, disabled = false }: any) => (
@@ -293,7 +293,7 @@ export default function App() {
                     <div key={product.id} className="bg-white p-4 rounded-2xl border border-slate-100 shadow-sm flex items-center justify-between hover:border-[#3b82f6] transition-colors">
                       <div className="flex-1 pr-4">
                         <h3 className="font-bold text-slate-800">{product.name}</h3>
-                        <p className="text-sm text-slate-500">{product.description || `${product.price.toLocaleString()}đ`}</p>
+                        <p className="text-sm text-slate-500">{product.description || 'Hộp 150gr'}</p>
                         <p className="text-[#3b82f6] font-bold mt-1">{product.price.toLocaleString()}đ</p>
                       </div>
                       <div className="flex items-center gap-3 bg-slate-50 p-1.5 rounded-xl border border-slate-100">
